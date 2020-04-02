@@ -1,0 +1,33 @@
+.navbar
+{
+    background-color: rgb(40, 40, 40);
+    height: 4em;
+}
+.topline
+{
+    height: 0.3em;
+    background-color: rgb(82, 168, 225);
+}
+body
+{
+    padding-top: 2em;
+    padding-bottom: 3em;
+    background-color: rgb(51, 51, 51);
+    color: white;
+}
+.botline
+{
+    height: 0.3em;
+    background-color: rgb(170, 10, 225);
+}
+footer
+{
+    background-color: rgb(40, 40, 40);
+}
+footer p
+{
+    color: white;
+    text-align: right;
+    height: 20px;
+    padding: 0.5em 1em 0.5em 0;
+}

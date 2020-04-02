@@ -1,13 +1,44 @@
+body
+{
+    background-color: rgb(51, 51, 51);
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
 .grid
 {
+    background-color: rgb(24, 24, 24);
+    padding: 1em 0.5em;
+    border-radius: 30px;
     width: fit-content;
-    margin: 5em auto;
+    height: 580px;
+    margin: 0 auto;
     display: flex;
     text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
-.c1
+.grid button
 {
-    margin: 0.1em;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 0.5em;
+}
+.side
+{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    margin: auto;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: rgb(33, 25, 43);
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.side p
+{
+    font-size: 3em;
+    color: white;
 }
 .c1 div
 {
@@ -15,12 +46,6 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
-}
-.c2
-{
-    margin: 0.1em;
 }
 .c2 div
 {
@@ -28,12 +53,6 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
-}
-.c3
-{
-    margin: 0.1em;
 }
 .c3 div
 {
@@ -41,12 +60,6 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
-}
-.c4
-{
-    margin: 0.1em;
 }
 .c4 div
 {
@@ -54,12 +67,6 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
-}
-.c5
-{
-    margin: 0.1em;
 }
 .c5 div
 {
@@ -67,12 +74,6 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
-}
-.c6
-{
-    margin: 0.1em;
 }
 .c6 div
 {
@@ -80,12 +81,6 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
-}
-.c7
-{
-    margin: 0.1em;
 }
 .c7 div
 {
@@ -93,6 +88,4 @@
     color: white;
     height: 80px;
     width: 80px;
-    margin-bottom: 0.1em;
-    background-color: royalblue;
 }

@@ -9,15 +9,25 @@ export class GridComponent implements OnInit {
 
   gridContent = [];
   playerToken = [];
-  init = '*';
+  buttons = [];
+  init = '/assets/emptyCase.png';
   count = 0;
   gridIsFull = false;
   thereIsAWinner = false;
   winnerName;
 
   constructor() {
-    this.playerToken[0] = 'X';
-    this.playerToken[1] = 'O';
+    this.initialisation();
+    this.playerToken[0] = '/assets/blueToken.png';
+    this.playerToken[1] = '/assets/greenToken.png';
+    for (let i = 0; i < 7; i++) {
+      this.buttons[i] = '/assets/blankArrow.png';
+    }
+  }
+  ngOnInit(): void {
+
+  }
+  initialisation() {
     for (let i = 0; i < 7; i++) {
       this.gridContent[i] = [];
     }
@@ -27,11 +37,6 @@ export class GridComponent implements OnInit {
       }
     }
   }
-
-  ngOnInit(): void {
-
-  }
-
   placeToken(column) {
     if (!this.gridIsFull && !this.thereIsAWinner) {
       for (let i = 5; i > -1; i--) {
@@ -44,7 +49,6 @@ export class GridComponent implements OnInit {
       }
     }
   }
-
   winCheck() {
     for (let c = 0; c < 7; c++) { //column check
       for (let r = 0; r < 3; r++) {
@@ -100,5 +104,16 @@ export class GridComponent implements OnInit {
     if (check) {
       this.gridIsFull = true;
     }
+  }
+  playAgain() {
+    this.initialisation();
+    this.gridIsFull = false;
+    this.thereIsAWinner = false;
+  }
+  onMouseOver(index) {
+    this.buttons[index] = '/assets/arrow.png';
+  }
+  onMouseOut(index) {
+    this.buttons[index] = '/assets/blankArrow.png';
   }
 }
