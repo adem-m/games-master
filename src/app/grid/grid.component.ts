@@ -111,7 +111,7 @@ export class GridComponent implements OnInit {
     this.thereIsAWinner = false;
   }
   onMouseOver(index) {
-    this.buttons[index] = '/assets/arrow.png';
+    this.buttons[index] = '/assets/arrow.svg';
   }
   onMouseOut(index) {
     this.buttons[index] = '/assets/blankArrow.png';
