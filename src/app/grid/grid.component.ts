@@ -1,9 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
+  animations: [
+    trigger('fade', [
+      state('visible', style({
+        opacity: 1
+      })),
+      state('invisible', style({
+        opacity: 0
+      })),
+      transition('visible => invisible', [
+        animate('0.3s')
+      ]),
+      transition('invisible => visible', [
+        animate('0.3s')
+      ]),
+    ]),
+  ],
 })
 export class GridComponent implements OnInit {
 
@@ -14,12 +31,14 @@ export class GridComponent implements OnInit {
   count = 0;
   gridIsFull = false;
   thereIsAWinner = false;
+  firstMove = true;
   winnerName;
+
 
   constructor() {
     this.initialisation();
     this.playerToken[0] = '/assets/blueToken.png';
-    this.playerToken[1] = '/assets/greenToken.png';
+    this.playerToken[1] = '/assets/purpleToken.png';
     for (let i = 0; i < 7; i++) {
       this.buttons[i] = '/assets/blankArrow.png';
     }
@@ -45,6 +64,7 @@ export class GridComponent implements OnInit {
           this.count++;
           i = -1;
           this.winCheck();
+          this.firstMove = false;
         }
       }
     }
