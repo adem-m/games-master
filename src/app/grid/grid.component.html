@@ -1,12 +1,13 @@
 <body>
+    <div class="whosTurn">Au tour de <img src="{{ playerToken[count % 2] }}" width="50px"></div>
     <div [@fade]="firstMove ? 'visible' : 'invisible'" class="lSide">
         <span>Cliquez sur l'un des carrés pour placer le premier jeton !</span>
     </div>
     <div class="grid">
         <div class="c" *ngFor="let c of gridContent; index as i">
-                <div *ngFor="let img of c"><img [@blink]="!img[1] ? 'visible' : 'invisible'" src="{{img[0]}}"></div>
-                <button type="button" class="btn btn-secondary" (click)="placeToken(i)" (mouseover)="onMouseOver(i)"
-                    (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="42px"></button>
+            <div *ngFor="let img of c"><img [@blink]="!img[1] ? 'visible' : 'invisible'" src="{{ img[0] }}" height="80px"></div>
+            <button type="button" class="btn btn-secondary" (click)="placeToken(i)" (mouseover)="onMouseOver(i)"
+                (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="42px"></button>
         </div>
     </div>
     <div [@fade]="thereIsAWinner || gridIsFull ? 'visible' : 'invisible'" class="rSide">

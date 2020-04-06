@@ -3,6 +3,7 @@ body
     background-color: rgb(51, 51, 51);
     display: grid;
     grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 50% 50%;
 }
 .grid
 {
@@ -16,6 +17,8 @@ body
     text-align: center;
     grid-column-start: 2;
     grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 .grid button
 {
@@ -34,10 +37,26 @@ body
     background-color: rgb(33, 25, 43);
     grid-column-start: 3;
     grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 .rSide p
 {
     font-size: 3em;
+    color: white;
+}
+.whosTurn
+{
+    width: fit-content;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1.8em;
+    margin: auto;
+    padding: 0.5em;
+    border-radius: 10px;
+    background-color: rgb(33, 25, 43);
     color: white;
 }
 .lSide
@@ -47,6 +66,8 @@ body
     width: fit-content;
     grid-column-start: 1;
     grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
     font-size: 1.8em;
     margin: auto auto 0 0.5em;
     padding: 0.5em;
