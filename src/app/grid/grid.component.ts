@@ -44,7 +44,7 @@ export class GridComponent implements OnInit {
   gridIsFull = false;
   thereIsAWinner = false;
   firstMove = true;
-  counterSubscription: Subscription;
+  counterSubscription: Subscription = null;
   winnerName;
 
 
@@ -59,6 +59,9 @@ export class GridComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnDestroy() {
+    if (this.counterSubscription !== null) {
+      this.counterSubscription.unsubscribe();
+    }
   }
   initialisation() {
     for (let i = 0; i < 7; i++) {
