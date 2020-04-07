@@ -59,7 +59,6 @@ export class GridComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnDestroy() {
-    this.counterSubscription.unsubscribe();
   }
   initialisation() {
     for (let i = 0; i < 7; i++) {

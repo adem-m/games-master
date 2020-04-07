@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<body>
+    <p class="whoPlays" *ngIf="!ended">Au tour de {{ whosNext() }}</p>
+    <div class="grille">
+        <button type="button" class="btn btn-light" (click)="whatSign(0)"><img src="{{ signes.get(0) }}"></button>
+        <button type="button" class="btn btn-light" (click)="whatSign(1)"><img src="{{ signes.get(1) }}"></button>
+        <button type="button" class="btn btn-light" (click)="whatSign(2)"><img src="{{ signes.get(2) }}"></button><br />
+        <button type="button" class="btn btn-light" (click)="whatSign(3)"><img src="{{ signes.get(3) }}"></button>
+        <button type="button" class="btn btn-light" (click)="whatSign(4)"><img src="{{ signes.get(4) }}"></button>
+        <button type="button" class="btn btn-light" (click)="whatSign(5)"><img src="{{ signes.get(5) }}"></button><br />
+        <button type="button" class="btn btn-light" (click)="whatSign(6)"><img src="{{ signes.get(6) }}"></button>
+        <button type="button" class="btn btn-light" (click)="whatSign(7)"><img src="{{ signes.get(7) }}"></button>
+        <button type="button" class="btn btn-light" (click)="whatSign(8)"><img src="{{ signes.get(8) }}"></button>
+    </div>
+    <div class="end">
+        <p *ngIf="ended">{{ endText }} <span *ngIf="ended && !draw">{{ whoWon() }} </span>!<br /><button type="button"
+                class="btn btn-info" (click)="sendScores()">Rejouer</button>
+        </p>
+    </div>
+</body>

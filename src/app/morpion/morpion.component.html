@@ -1,0 +1,8 @@
+<body>
+    <div class="game">
+      <app-name-choice (xNameChanged)="setXName($event)" (oNameChanged)="setOName($event)"></app-name-choice>
+      <app-grille [xName]="xName" [oName]="oName" (xScoreUpdate)="setXScore($event)" (oScoreUpdate)="setOScore($event)">
+      </app-grille>
+      <app-score [xScore]="xScore" [oScore]="oScore"></app-score>
+    </div>
+  </body>
