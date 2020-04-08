@@ -97,7 +97,7 @@ export class GridComponent implements OnInit {
         if (this.gridContent[c][r][0] !== this.init &&
           this.gridContent[c][r][0] === this.gridContent[c][r + 1][0] &&
           this.gridContent[c][r][0] === this.gridContent[c][r + 2][0] &&
-          this.gridContent[c][r][0] === this.gridContent[c][r + 3][0]) {
+          this.gridContent[c][r][0] === this.gridContent[c][r + 3][0] && !this.thereIsAWinner) {
           this.thereIsAWinner = true;
           this.winnerName = this.gridContent[c][r][0];
           this.makeBlink(c, r, c, r + 1, c, r + 2, c, r + 3);
@@ -109,7 +109,7 @@ export class GridComponent implements OnInit {
         if (this.gridContent[c][r][0] !== this.init &&
           this.gridContent[c][r][0] === this.gridContent[c + 1][r][0] &&
           this.gridContent[c][r][0] === this.gridContent[c + 2][r][0] &&
-          this.gridContent[c][r][0] === this.gridContent[c + 3][r][0]) {
+          this.gridContent[c][r][0] === this.gridContent[c + 3][r][0] && !this.thereIsAWinner) {
           this.thereIsAWinner = true;
           this.winnerName = this.gridContent[c][r][0];
           this.makeBlink(c, r, c + 1, r, c + 2, r, c + 3, r);
@@ -121,7 +121,7 @@ export class GridComponent implements OnInit {
         if (this.gridContent[c][r][0] !== this.init &&
           this.gridContent[c][r][0] === this.gridContent[c + 1][r + 1][0] &&
           this.gridContent[c][r][0] === this.gridContent[c + 2][r + 2][0] &&
-          this.gridContent[c][r][0] === this.gridContent[c + 3][r + 3][0]) {
+          this.gridContent[c][r][0] === this.gridContent[c + 3][r + 3][0] && !this.thereIsAWinner) {
           this.thereIsAWinner = true;
           this.winnerName = this.gridContent[c][r][0];
           this.makeBlink(c, r, c + 1, r + 1, c + 2, r + 2, c + 3, r + 3);
@@ -133,7 +133,7 @@ export class GridComponent implements OnInit {
         if (this.gridContent[c][r][0] !== this.init &&
           this.gridContent[c][r][0] === this.gridContent[c - 1][r + 1][0] &&
           this.gridContent[c][r][0] === this.gridContent[c - 2][r + 2][0] &&
-          this.gridContent[c][r][0] === this.gridContent[c - 3][r + 3][0]) {
+          this.gridContent[c][r][0] === this.gridContent[c - 3][r + 3][0] && !this.thereIsAWinner) {
           this.thereIsAWinner = true;
           this.winnerName = this.gridContent[c][r][0];
           this.makeBlink(c, r, c - 1, r + 1, c - 2, r + 2, c - 3, r + 3);

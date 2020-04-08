@@ -9,6 +9,7 @@ import { MorpionComponent } from './morpion/morpion.component';
 import { NameChoiceComponent } from './name-choice/name-choice.component';
 import { GrilleComponent } from './grille/grille.component';
 import { ScoreComponent } from './score/score.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ScoreComponent } from './score/score.component';
     MorpionComponent,
     NameChoiceComponent,
     GrilleComponent,
-    ScoreComponent
+    ScoreComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
