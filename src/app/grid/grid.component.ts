@@ -39,7 +39,7 @@ export class GridComponent implements OnInit {
   gridContent = [];
   playerToken = [];
   buttons = [];
-  init = '/assets/emptyCase.png';
+  init = 'assets/emptyCase.png';
   count = 0;
   gridIsFull = false;
   thereIsAWinner = false;
@@ -50,10 +50,10 @@ export class GridComponent implements OnInit {
 
   constructor() {
     this.initialisation();
-    this.playerToken[0] = '/assets/blueToken.png';
-    this.playerToken[1] = '/assets/purpleToken.png';
+    this.playerToken[0] = 'assets/blueToken.png';
+    this.playerToken[1] = 'assets/purpleToken.png';
     for (let i = 0; i < 7; i++) {
-      this.buttons[i] = '/assets/blankArrow.png';
+      this.buttons[i] = 'assets/blankArrow.png';
     }
   }
   ngOnInit(): void {
@@ -157,10 +157,10 @@ export class GridComponent implements OnInit {
     this.thereIsAWinner = false;
   }
   onMouseOver(index) {
-    this.buttons[index] = '/assets/arrow.svg';
+    this.buttons[index] = 'assets/arrow.svg';
   }
   onMouseOut(index) {
-    this.buttons[index] = '/assets/blankArrow.png';
+    this.buttons[index] = 'assets/blankArrow.png';
   }
   makeBlink(c1, r1, c2, r2, c3, r3, c4, r4) {
     const counter = interval(500);

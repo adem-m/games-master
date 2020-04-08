@@ -27,22 +27,22 @@ export class GrilleComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 0; i < 9; i++) {
-      this.signes.set(i, '/assets/img/blankIcon.png');
+      this.signes.set(i, 'assets/img/blankIcon.png');
     }
     this.xName = 'X';
     this.oName = 'O';
   }
   whatSign(index) {
     if (this.round % 2 === 0) {
-      if (this.signes.get(index) === '/assets/img/blankIcon.png' && !this.ended) {
-        this.signes.set(index, '/assets/img/oIcon.png');
+      if (this.signes.get(index) === 'assets/img/blankIcon.png' && !this.ended) {
+        this.signes.set(index, 'assets/img/oIcon.png');
         this.lastIndex = index;
         this.round++;
         this.verif();
       }
     } else {
-      if (this.signes.get(index) === '/assets/img/blankIcon.png' && !this.ended) {
-        this.signes.set(index, '/assets/img/xIcon.png');
+      if (this.signes.get(index) === 'assets/img/blankIcon.png' && !this.ended) {
+        this.signes.set(index, 'assets/img/xIcon.png');
         this.lastIndex = index;
         this.round++;
         this.verif();
@@ -52,22 +52,22 @@ export class GrilleComponent implements OnInit {
   verif() {
     for (let i = 0; i < 7; i += 3) {
       if (this.signes.get(i) === this.signes.get(i + 1) && this.signes.get(i) === this.signes.get(i + 2)
-        && this.signes.get(i) !== '/assets/img/blankIcon.png') {
+        && this.signes.get(i) !== 'assets/img/blankIcon.png') {
         this.ended = true;
       }
     }
     for (let i = 0; i < 3; i++) {
       if (this.signes.get(i) === this.signes.get(i + 3) && this.signes.get(i) === this.signes.get(i + 6)
-        && this.signes.get(i) !== '/assets/img/blankIcon.png') {
+        && this.signes.get(i) !== 'assets/img/blankIcon.png') {
         this.ended = true;
       }
     }
     if (this.signes.get(0) === this.signes.get(4) && this.signes.get(0) === this.signes.get(8)
-      && this.signes.get(0) !== '/assets/img/blankIcon.png') {
+      && this.signes.get(0) !== 'assets/img/blankIcon.png') {
       this.ended = true;
     }
     if (this.signes.get(2) === this.signes.get(4) && this.signes.get(2) === this.signes.get(6)
-      && this.signes.get(2) !== '/assets/img/blankIcon.png') {
+      && this.signes.get(2) !== 'assets/img/blankIcon.png') {
       this.ended = true;
     }
     if (this.ended) {
@@ -75,7 +75,7 @@ export class GrilleComponent implements OnInit {
     }
     let j = 0;
     for (let i = 0; i < 9; i++) {
-      if (this.signes.get(i) !== '/assets/img/blankIcon.png') {
+      if (this.signes.get(i) !== 'assets/img/blankIcon.png') {
         j++;
       }
     }
@@ -88,13 +88,13 @@ export class GrilleComponent implements OnInit {
   }
   playAgain() {
     for (let i = 0; i < 9; i++) {
-      this.signes.set(i, '/assets/img/blankIcon.png');
+      this.signes.set(i, 'assets/img/blankIcon.png');
     }
     this.ended = false;
     this.draw = false;
   }
   whoWon() {
-    if (this.signes.get(this.lastIndex) === '/assets/img/oIcon.png') {
+    if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
       this.oScore++;
       return this.oName;
     } else {
