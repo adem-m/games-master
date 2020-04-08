@@ -41,7 +41,7 @@ export class GridComponent implements OnInit {
   buttons = [];
   init = 'assets/emptyCase.png';
   count = 0;
-  gridIsFull = false;
+  draw = false;
   thereIsAWinner = false;
   firstMove = true;
   counterSubscription: Subscription = null;
@@ -74,12 +74,12 @@ export class GridComponent implements OnInit {
         this.gridContent[i][j][1] = false;
       }
     }
-    if (this.count !== 0) {
+    if (this.counterSubscription !== null) {
       this.counterSubscription.unsubscribe();
     }
   }
   placeToken(column) {
-    if (!this.gridIsFull && !this.thereIsAWinner) {
+    if (!this.draw && !this.thereIsAWinner) {
       for (let i = 5; i > -1; i--) {
         if (this.gridContent[column][i][0] === this.init) {
           this.gridContent[column][i][0] = this.playerToken[this.count % 2];
@@ -148,12 +148,12 @@ export class GridComponent implements OnInit {
       }
     }
     if (check) {
-      this.gridIsFull = true;
+      this.draw = true;
     }
   }
   playAgain() {
     this.initialisation();
-    this.gridIsFull = false;
+    this.draw = false;
     this.thereIsAWinner = false;
   }
   onMouseOver(index) {

@@ -10,8 +10,8 @@
                 (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="42px"></button>
         </div>
     </div>
-    <div [@fade]="thereIsAWinner || gridIsFull ? 'visible' : 'invisible'" class="rSide">
-        <p *ngIf="gridIsFull">Match nul</p>
+    <div [@fade]="thereIsAWinner || draw ? 'visible' : 'invisible'" class="rSide">
+        <p *ngIf="draw">Match nul</p>
         <p *ngIf="thereIsAWinner">Victoire de <img src="{{ winnerName }}"></p>
         <button type="button" class="btn btn-info" (click)="playAgain()">Rejouer</button>
     </div>
