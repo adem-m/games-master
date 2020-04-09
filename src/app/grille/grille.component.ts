@@ -72,6 +72,12 @@ export class GrilleComponent implements OnInit {
     }
     if (this.ended) {
       this.endText = 'Bien joué ';
+      if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
+        this.oScore++;
+      } else if (this.signes.get(this.lastIndex) === 'assets/img/xIcon.png'){
+        this.xScore++;
+      }
+      this.sendScores();
     }
     let j = 0;
     for (let i = 0; i < 9; i++) {
@@ -84,7 +90,6 @@ export class GrilleComponent implements OnInit {
       this.ended = true;
       this.endText = 'Match nul';
     }
-    this.whosNext();
   }
   playAgain() {
     for (let i = 0; i < 9; i++) {
@@ -95,10 +100,8 @@ export class GrilleComponent implements OnInit {
   }
   whoWon() {
     if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
-      this.oScore++;
       return this.oName;
     } else {
-      this.xScore++;
       return this.xName;
     }
   }
@@ -118,7 +121,6 @@ export class GrilleComponent implements OnInit {
     }
   }
   sendScores() {
-    this.playAgain();
     this.xScoreUpdate.emit(this.xScore);
     this.oScoreUpdate.emit(this.oScore);
   }

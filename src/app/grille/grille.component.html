@@ -16,7 +16,7 @@
     </div>
     <div class="end">
         <p *ngIf="ended">{{ endText }} <span *ngIf="ended && !draw">{{ whoWon() }} </span>!<br /><button type="button"
-                class="btn btn-info" (click)="sendScores()">Rejouer</button>
+                class="btn btn-info" (click)="playAgain()">Rejouer</button>
         </p>
     </div>
 </body>

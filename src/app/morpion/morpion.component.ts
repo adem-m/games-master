@@ -29,10 +29,10 @@ export class MorpionComponent implements OnInit {
   }
 
   setXScore(score: number) {
-    this.xScore = score / 2;
+    this.xScore = score;
   }
 
   setOScore(score: number) {
-    this.oScore = score / 2;
+    this.oScore = score;
   }
 }
