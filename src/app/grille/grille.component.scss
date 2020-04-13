@@ -5,7 +5,7 @@ body
     background-color: rgb(51, 51, 51);
     color: white;
     display: grid;
-    grid-template-rows: 70px auto auto;
+    grid-template-rows: 2em auto auto;
 }
 .btn
 {
@@ -14,10 +14,8 @@ body
 .whoPlays
 {
     width: fit-content;
-    height: 70px;
     margin: auto;
-    margin-top: 1em;
-    font-size: 2em;
+    margin-bottom: 1em;
     grid-row-start: 1;
     grid-row-end: 2;
 }
@@ -25,8 +23,6 @@ body
 {
     width: fit-content;
     margin: auto;
-    margin-top: 2em;
-    position: static;
     grid-row-start: 2;
     grid-row-end: 3;
 }
@@ -34,8 +30,9 @@ body
 {
     text-align: center;
     width: fit-content;
+    height: 4em;
     margin: auto;
-    font-size: 1.5em;
+    font-size: 2em;
     grid-row-start: 3;
     grid-row-end: 4;
 }
