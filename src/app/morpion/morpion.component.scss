@@ -1,30 +1,31 @@
-body
-{
-    padding-top: 4em;
-    display: grid;
+body {
+    padding-top: 10vh;
+    padding-bottom: 4em;
     background-color: rgb(51, 51, 51);
     color: white;
 }
-.game
-{
-    display: grid;
-    grid-template-columns: 35% 30% 35%;
+.game {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: 35% 30% 35%;
 }
-app-name-choice
-{
-    padding-top: 8em;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    width: 70%;
+app-name-choice {
+    // padding-top: 8em;
+    // grid-column-start: 1;
+    // grid-column-end: 2;
+    max-width: 300px;
+    margin: auto;
 }
-app-grille
-{
-    grid-column-start: 2;
-    grid-column-end: 3;
+app-grille {
+    // grid-column-start: 2;
+    // grid-column-end: 3;
+    margin: auto;
 }
-app-score
-{
-    padding-top: 8em;
-    grid-column-start: 3;
-    grid-column-end: 4;
+app-score {
+    // padding-top: 8em;
+    // grid-column-start: 3;
+    // grid-column-end: 4;
+    margin: auto;
 }

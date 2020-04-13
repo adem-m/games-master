@@ -6,8 +6,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
-  { path: 'gridMaster', component: MorpionComponent},
-  { path: 'rowMaster', component: GridComponent},
+  { path: 'grid-master', component: MorpionComponent},
+  { path: 'row-master', component: GridComponent},
   { path: '', component: GridComponent},
   { path: 'not-found', component: NotFoundComponent},
   { path: '**', redirectTo: 'not-found'}

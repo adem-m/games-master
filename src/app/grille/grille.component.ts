@@ -1,9 +1,26 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-grille',
   templateUrl: './grille.component.html',
-  styleUrls: ['./grille.component.scss']
+  styleUrls: ['./grille.component.scss'],
+  animations: [
+    trigger('fade', [
+      state('visible', style({
+        opacity: 1
+      })),
+      state('invisible', style({
+        opacity: 0
+      })),
+      transition('visible => invisible', [
+        animate('0.3s')
+      ]),
+      transition('invisible => visible', [
+        animate('0.3s')
+      ]),
+    ])
+  ]
 })
 export class GrilleComponent implements OnInit {
 
@@ -74,7 +91,7 @@ export class GrilleComponent implements OnInit {
       this.endText = 'Bien joué ';
       if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
         this.oScore++;
-      } else if (this.signes.get(this.lastIndex) === 'assets/img/xIcon.png'){
+      } else if (this.signes.get(this.lastIndex) === 'assets/img/xIcon.png') {
         this.xScore++;
       }
       this.sendScores();

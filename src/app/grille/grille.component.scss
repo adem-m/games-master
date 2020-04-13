@@ -5,7 +5,7 @@ body
     background-color: rgb(51, 51, 51);
     color: white;
     display: grid;
-    grid-template-rows: 70px 50% 40%;
+    grid-template-rows: 70px auto auto;
 }
 .btn
 {
@@ -35,7 +35,6 @@ body
     text-align: center;
     width: fit-content;
     margin: auto;
-    margin-top: 1.5em;
     font-size: 1.5em;
     grid-row-start: 3;
     grid-row-end: 4;
