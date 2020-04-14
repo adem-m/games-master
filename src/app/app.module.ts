@@ -10,6 +10,10 @@ import { NameChoiceComponent } from './name-choice/name-choice.component';
 import { GrilleComponent } from './grille/grille.component';
 import { ScoreComponent } from './score/score.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +23,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NameChoiceComponent,
     GrilleComponent,
     ScoreComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,16 +8,47 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark">
             <a class="navbar-brand" href=""><img src="assets/blueToken.png" style="width:50px;"></a>
-            <a class="navbar-brand" href="https://github.com/adem-m" target="_blank">Github</a>
-            <a class="navbar-brand" href="https://adem-m.github.io/website" target="_blank">Site Web</a>
+            <button mat-raised-button color="accent" routerLink="row-master">Row Master</button>
+            <button mat-raised-button color="accent" routerLink="grid-master">Grid Master</button>
+            <button mat-raised-button (click)="openRules(index)">Règles</button>
             <div class="spacer"></div>
-            <a class="navbar-brand gameButton" routerLink="grid-master">Grid Master</a>
-            <a class="navbar-brand gameButton" routerLink="row-master">Row Master</a>
+            <a mat-stroked-button color="accent" href="https://github.com/adem-m" target="_blank">Github</a>
+            <a mat-stroked-button color="accent" href="https://adem-m.github.io/website" target="_blank">Site Web</a>
         </nav>
         <div class="topline"></div>
     </header>
 
     <body>
+        <div class="rules" *ngIf="rules">
+            <div class="rulesBg" (click)="closeRules()"></div>
+            <div class="rulesPopup">
+                <div class="rulesPopupHeader">
+                    <h2>Règles</h2>
+                    <div class="spacer"></div>
+                    <button mat-icon-button (click)="closeRules()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                <mat-tab-group dynamicHeight color="accent" selectedIndex="{{ index }}">
+                    <mat-tab label="Row Master">
+                        <div class="example-small-box mat-elevation-z4">
+                            <h4>Objectif</h4>
+                            Aligner 4 jetons de la même couleur en ligne, en colonne ou en diagonale.
+                            <h4>Comment jouer ?</h4>
+                            Cliquez sur le carré au bas de la colonne dans laquelle vous souhaitez placer votre jeton.
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Grid Master">
+                        <div class="example-large-box mat-elevation-z4">
+                            <h4>Objectif</h4>
+                            Aligner 3 fois son signe en ligne, en colonne ou en diagonale.
+                            <h4>Comment jouer ?</h4>
+                            Cliquez directement sur la case où vous souhaitez placer votre signe !
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
         <div class="base">
             <router-outlet></router-outlet>
         </div>
