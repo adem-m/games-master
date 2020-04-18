@@ -1,85 +1,67 @@
 body
 {
-    padding-top: 2em;
+    padding: 2em 0.5em 0 0.5em;
     background-color: rgb(51, 51, 51);
-    display: grid;
-    grid-template-columns: 30% 40% 30%;
-    grid-template-rows: 50% 50%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    color: white;
 }
 .grid
 {
+    flex-grow: 1;
     background-color: rgb(24, 24, 24);
     padding: 1em 0.5em;
     border-radius: 30px;
-    width: fit-content;
-    height: 580px;
-    margin: 0 auto;
+    margin: 1em auto 0 auto;
     display: flex;
     text-align: center;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    max-width: 500px;
+}
+.column
+{
+    width: 100%;  
 }
 .grid button
 {
     width: fit-content;
     height: fit-content;
-    margin-top: 0.5em;
-}
-.rSide
-{
-    width: fit-content;
-    height: fit-content;
-    text-align: center;
-    margin: auto;
-    padding: 1em;
-    border-radius: 10px;
-    background-color: rgb(33, 25, 43);
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 3;
-}
-.rSide p
-{
-    font-size: 3em;
-    color: white;
+    margin: 0.5em 0.2em 0 0.2em;
 }
 .whosTurn
 {
     width: fit-content;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    font-size: 1.8em;
     margin: auto;
-    padding: 0.5em;
-    border-radius: 10px;
-    background-color: rgb(33, 25, 43);
-    color: white;
-}
-.lSide
-{
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
     font-size: 1.8em;
-    margin: auto auto 0 0.5em;
+    padding: 0.2em 0.5em;
+    border-radius: 10px;
+    background-color: rgb(33, 25, 43);
+}
+.infos
+{
+    margin-top: 1em;
+    max-width: 400px;
+}
+.firstMovePopup
+{
+    width: fit-content;
+    height: fit-content;
+    font-size: 1.7em;
     padding: 0.5em;
     border-radius: 10px;
     background-color: rgb(33, 25, 43);
-    color: white;
 }
-.c div
+.gameEndedPopup
 {
-    font-size: 2em;
-    color: white;
-    height: 80px;
-    width: 80px;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    text-align: center;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: rgb(33, 25, 43);
+}
+.gameEndedPopup p
+{
+    font-size: 2.5em;
 }

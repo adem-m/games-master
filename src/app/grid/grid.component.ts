@@ -9,10 +9,13 @@ import { Observable, interval, Subscription } from 'rxjs';
   animations: [
     trigger('fade', [
       state('visible', style({
-        opacity: 1
+        opacity: 1,
       })),
       state('invisible', style({
-        opacity: 0
+        opacity: 0,
+        height: 0,
+        margin: 0,
+        padding: 0
       })),
       transition('visible => invisible', [
         animate('0.3s')

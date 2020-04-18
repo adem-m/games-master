@@ -8,10 +8,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('fade', [
       state('visible', style({
-        opacity: 1
       })),
       state('invisible', style({
-        opacity: 0
+        opacity: 0,
+        height: 0
       })),
       transition('visible => invisible', [
         animate('0.3s')
@@ -34,6 +34,6 @@ export class AppComponent {
     this.rules = true;
   }
   closeRules() {
-    this.rules = false;
+    this.rules = !this.rules;
   }
 }

@@ -16,7 +16,7 @@
     <div class="end">
         <p class="whoPlays" *ngIf="!ended">Au tour de {{ whosNext() }}</p>
         <p *ngIf="ended">{{ endText }} <span *ngIf="ended && !draw">{{ whoWon() }}
-            </span>!<br /><button type="button" class="btn btn-info" (click)="playAgain()">Rejouer</button>
+            </span>!<br /> <button mat-raised-button color="accent" (click)="playAgain()">Rejouer</button>
         </p>
     </div>
 </body>

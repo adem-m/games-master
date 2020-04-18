@@ -11,17 +11,14 @@
             <button mat-raised-button color="accent" routerLink="row-master">Row Master</button>
             <button mat-raised-button color="accent" routerLink="grid-master">Grid Master</button>
             <button mat-raised-button (click)="openRules(index)">Règles</button>
-            <div class="spacer"></div>
-            <a mat-stroked-button color="accent" href="https://github.com/adem-m" target="_blank">Github</a>
-            <a mat-stroked-button color="accent" href="https://adem-m.github.io/website" target="_blank">Site Web</a>
         </nav>
         <div class="topline"></div>
     </header>
 
     <body>
-        <div class="rules" *ngIf="rules">
-            <div class="rulesBg" (click)="closeRules()"></div>
-            <div class="rulesPopup">
+        <div class="rules">
+            <div class="rulesBg" (click)="closeRules()" [@fade]="rules ? 'visible' : 'invisible'"></div>
+            <div class="rulesPopup" [@fade]="rules ? 'visible' : 'invisible'">
                 <div class="rulesPopupHeader">
                     <h2>Règles</h2>
                     <div class="spacer"></div>
@@ -54,9 +51,14 @@
         </div>
     </body>
 
-    <footer class="fixed-bottom">
+    <footer>
         <div class="botline"></div>
-        <p>By Adem Mrizak</p>
+        <div class="footerContent">
+            <a mat-stroked-button color="accent" href="https://github.com/adem-m" target="_blank">Github</a>
+            <a mat-stroked-button color="accent" href="https://adem-m.github.io/website" target="_blank">Site Web</a>
+            <div class="spacer"></div>
+            <p>By Adem Mrizak</p>
+        </div>
     </footer>
 </div>
 
