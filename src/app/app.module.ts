@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { MorpionComponent } from './morpion/morpion.component';
-import { GrilleComponent } from './grille/grille.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -22,7 +21,6 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     GridComponent,
     MorpionComponent,
-    GrilleComponent,
     NotFoundComponent,
   ],
   imports: [
