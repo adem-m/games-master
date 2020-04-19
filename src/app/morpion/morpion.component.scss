@@ -1,8 +1,5 @@
 body
 {
-    width: fit-content;
-    height: fit-content;
-    margin: auto;
     background-color: rgb(51, 51, 51);
     color: white;
     display: grid;
@@ -17,7 +14,6 @@ body
 {
     width: fit-content;
     margin: auto;
-    margin-bottom: 1em;
     grid-row-start: 1;
     grid-row-end: 2;
 }
@@ -30,11 +26,13 @@ body
 }
 .end
 {
-    text-align: center;
     width: fit-content;
-    height: 4em;
-    margin: auto;
+    text-align: center;
+    margin: 1em auto 0 auto;
     font-size: 2em;
+    padding: 0.2em 0.5em;
+    border-radius: 10px;
+    background-color: rgb(33, 25, 43);
     grid-row-start: 3;
     grid-row-end: 4;
 }

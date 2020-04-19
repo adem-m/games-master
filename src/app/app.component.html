@@ -13,7 +13,7 @@
             <button mat-raised-button (click)="openRules(index)">Règles</button>
             <div class="spacer"></div>
             <div class="scoreBox">
-                <mat-form-field appearance="legacy">
+                <mat-form-field style="text-align: right;" appearance="legacy">
                     <mat-label>Joueur 1</mat-label>
                     <input matInput>
                 </mat-form-field>
@@ -52,7 +52,7 @@
                             <h4>Objectif</h4>
                             Aligner 3 fois son signe en ligne, en colonne ou en diagonale.
                             <h4>Comment jouer ?</h4>
-                            Cliquez directement sur la case où vous souhaitez placer votre signe !
+                            Cliquez directement sur la case où vous souhaitez placer votre signe.
                         </div>
                     </mat-tab>
                 </mat-tab-group>
@@ -62,7 +62,6 @@
             <router-outlet></router-outlet>
         </div>
     </body>
-
     <footer>
         <div class="botline"></div>
         <div class="footerContent">
