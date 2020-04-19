@@ -32,9 +32,6 @@ export class GrilleComponent implements OnInit {
   endText: string;
   lastIndex = -1;
 
-  @Input() xName: string;
-  @Input() oName: string;
-
   constructor(private service: ScoresService) {
   }
 
@@ -42,8 +39,6 @@ export class GrilleComponent implements OnInit {
     for (let i = 0; i < 9; i++) {
       this.signes.set(i, 'assets/img/blankIcon.png');
     }
-    this.xName = 'X';
-    this.oName = 'O';
   }
   whatSign(index) {
     if (this.round % 2 === 0) {
@@ -84,7 +79,7 @@ export class GrilleComponent implements OnInit {
       this.ended = true;
     }
     if (this.ended) {
-      this.endText = 'Bien joué ';
+      this.endText = 'Victoire de ';
       if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
         this.service.j2ScoreUpdate();
       } else if (this.signes.get(this.lastIndex) === 'assets/img/xIcon.png') {
@@ -110,26 +105,12 @@ export class GrilleComponent implements OnInit {
     this.ended = false;
     this.draw = false;
   }
-  whoWon() {
-    if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
-      return this.oName;
-    } else {
-      return this.xName;
-    }
-  }
   whosNext() {
     if (this.round % 2 === 0) {
-      if (this.oName.length === 0) {
-        return 'O';
-      } else {
-        return this.oName;
-      }
+      return 'assets/img/oIcon.png';
     } else {
-      if (this.xName.length === 0) {
-        return 'X';
-      } else {
-        return this.xName;
-      }
+      return 'assets/img/xIcon.png';
     }
   }
 }
+

@@ -7,9 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { MorpionComponent } from './morpion/morpion.component';
-import { NameChoiceComponent } from './name-choice/name-choice.component';
 import { GrilleComponent } from './grille/grille.component';
-import { ScoreComponent } from './score/score.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -24,9 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     GridComponent,
     MorpionComponent,
-    NameChoiceComponent,
     GrilleComponent,
-    ScoreComponent,
     NotFoundComponent,
   ],
   imports: [

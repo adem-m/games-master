@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
 <body>
     <div class="grille">
         <button type="button" class="btn btn-light" (click)="whatSign(0)"><img src="{{ signes.get(0) }}"></button>
@@ -14,9 +11,10 @@
         <button type="button" class="btn btn-light" (click)="whatSign(8)"><img src="{{ signes.get(8) }}"></button>
     </div>
     <div class="end">
-        <p class="whoPlays" *ngIf="!ended">Au tour de {{ whosNext() }}</p>
-        <p *ngIf="ended">{{ endText }} <span *ngIf="ended && !draw">{{ whoWon() }}
-            </span>!<br /> <button mat-raised-button color="accent" (click)="playAgain()">Rejouer</button>
+        <p class="whoPlays" *ngIf="!ended">Au tour de <img src="{{ whosNext() }}"></p>
+        <p *ngIf="ended">{{ endText }} <span *ngIf="ended && !draw"><img
+                    src="{{ signes.get(this.lastIndex) }}"></span><br /> <button mat-raised-button color="accent"
+                (click)="playAgain()">Rejouer</button>
         </p>
     </div>
 </body>
