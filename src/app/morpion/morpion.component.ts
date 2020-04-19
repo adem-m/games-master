@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-morpion',
@@ -12,8 +12,8 @@ export class MorpionComponent implements OnInit {
   xName: string;
   oName: string;
 
-  xScore: number = 0;
-  oScore: number = 0;
+  xScore = 0;
+  oScore = 0;
 
   constructor() {
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ScoresService } from '../services/scores.service';
 
 @Component({
   selector: 'app-grille',
@@ -30,16 +31,11 @@ export class GrilleComponent implements OnInit {
   draw = false;
   endText: string;
   lastIndex = -1;
-  xScore = 0;
-  oScore = 0;
 
   @Input() xName: string;
   @Input() oName: string;
 
-  @Output() xScoreUpdate = new EventEmitter<number>();
-  @Output() oScoreUpdate = new EventEmitter<number>();
-
-  constructor() {
+  constructor(private service: ScoresService) {
   }
 
   ngOnInit(): void {
@@ -90,11 +86,10 @@ export class GrilleComponent implements OnInit {
     if (this.ended) {
       this.endText = 'Bien joué ';
       if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
-        this.oScore++;
+        this.service.j2ScoreUpdate();
       } else if (this.signes.get(this.lastIndex) === 'assets/img/xIcon.png') {
-        this.xScore++;
+        this.service.j1ScoreUpdate();
       }
-      this.sendScores();
     }
     let j = 0;
     for (let i = 0; i < 9; i++) {
@@ -136,9 +131,5 @@ export class GrilleComponent implements OnInit {
         return this.xName;
       }
     }
-  }
-  sendScores() {
-    this.xScoreUpdate.emit(this.xScore);
-    this.oScoreUpdate.emit(this.oScore);
   }
 }

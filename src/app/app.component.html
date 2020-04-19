@@ -11,14 +11,26 @@
             <button mat-raised-button color="accent" routerLink="row-master">Row Master</button>
             <button mat-raised-button color="accent" routerLink="grid-master">Grid Master</button>
             <button mat-raised-button (click)="openRules(index)">Règles</button>
+            <div class="spacer"></div>
+            <div class="scoreBox">
+            <mat-form-field appearance="legacy">
+                <mat-label>Joueur 1</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <span class="score">{{ getScore1() }} - {{ getScore2() }}</span>
+            <mat-form-field appearance="legacy">
+                <mat-label>Joueur 2</mat-label>
+                <input matInput>
+            </mat-form-field>
+            </div>
         </nav>
         <div class="topline"></div>
     </header>
 
     <body>
-        <div class="rules">
-            <div class="rulesBg" (click)="closeRules()" [@fade]="rules ? 'visible' : 'invisible'"></div>
-            <div class="rulesPopup" [@fade]="rules ? 'visible' : 'invisible'">
+        <div @fade *ngIf="rules" class="rules">
+            <div class="rulesBg" (click)="closeRules()"></div>
+            <div class="rulesPopup">
                 <div class="rulesPopupHeader">
                     <h2>Règles</h2>
                     <div class="spacer"></div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ScoresService } from '../app/services/scores.service';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,13 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('fade', [
-      state('visible', style({
-      })),
-      state('invisible', style({
-        opacity: 0,
-        height: 0
-      })),
-      transition('visible => invisible', [
-        animate('0.3s')
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 })),
       ]),
-      transition('invisible => visible', [
-        animate('0.3s')
-      ]),
+      transition(':leave', [
+        animate('300ms', style({ opacity: 0 }))
+      ])
     ]),
   ]
 })
@@ -27,13 +23,21 @@ export class AppComponent {
   rules = false;
   isActive = false;
   index = 0;
-  chaine;
 
-  openRules(i) {
+  constructor(private service: ScoresService) {
+  }
+
+  openRules(i: number) {
     this.index = i;
     this.rules = true;
   }
   closeRules() {
     this.rules = !this.rules;
+  }
+  getScore1() {
+    return this.service.j1Score;
+  }
+  getScore2() {
+    return this.service.j2Score;
   }
 }

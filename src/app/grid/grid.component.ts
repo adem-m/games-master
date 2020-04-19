@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Observable, interval, Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
+import { ScoresService } from '../services/scores.service';
 
 @Component({
   selector: 'app-grid',
@@ -50,8 +51,7 @@ export class GridComponent implements OnInit {
   counterSubscription: Subscription = null;
   winnerName;
 
-
-  constructor() {
+  constructor(private service: ScoresService) {
     this.initialisation();
     this.playerToken[0] = 'assets/blueToken.png';
     this.playerToken[1] = 'assets/purpleToken.png';
@@ -61,7 +61,7 @@ export class GridComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  ngOnDestroy() {
+  OnDestroy() {
     if (this.counterSubscription !== null) {
       this.counterSubscription.unsubscribe();
     }
@@ -95,7 +95,7 @@ export class GridComponent implements OnInit {
     }
   }
   winCheck() {
-    for (let c = 0; c < 7; c++) { //column check
+    for (let c = 0; c < 7; c++) { // column check
       for (let r = 0; r < 3; r++) {
         if (this.gridContent[c][r][0] !== this.init &&
           this.gridContent[c][r][0] === this.gridContent[c][r + 1][0] &&
@@ -107,7 +107,7 @@ export class GridComponent implements OnInit {
         }
       }
     }
-    for (let c = 0; c < 4; c++) { //row check
+    for (let c = 0; c < 4; c++) { // row check
       for (let r = 0; r < 6; r++) {
         if (this.gridContent[c][r][0] !== this.init &&
           this.gridContent[c][r][0] === this.gridContent[c + 1][r][0] &&
@@ -143,7 +143,11 @@ export class GridComponent implements OnInit {
         }
       }
     }
-
+    if (this.winnerName === this.playerToken[0]) {
+      this.service.j1ScoreUpdate();
+    } else if (this.winnerName === this.playerToken[1]) {
+      this.service.j2ScoreUpdate();
+    }
     let check = true;
     for (let i = 0; i < 7; i++) {
       if (this.gridContent[i][0][0] === this.init) {
@@ -158,6 +162,7 @@ export class GridComponent implements OnInit {
     this.initialisation();
     this.draw = false;
     this.thereIsAWinner = false;
+    this.winnerName = '';
   }
   onMouseOver(index) {
     this.buttons[index] = 'assets/arrow.svg';
