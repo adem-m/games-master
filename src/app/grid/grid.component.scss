@@ -1,14 +1,12 @@
-body
-{
-    padding: 2em 0.5em 0 0.5em;
+body {
+    padding: 0 0.5em;
     background-color: rgb(51, 51, 51);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     color: white;
 }
-.grid
-{
+.grid {
     flex-grow: 1;
     background-color: rgb(24, 24, 24);
     padding: 1em 0.5em;
@@ -18,18 +16,19 @@ body
     text-align: center;
     max-width: 500px;
 }
-.column
-{
-    width: 100%;  
+.column {
+    width: 100%;
 }
-.grid button
-{
+.grid button {
     width: fit-content;
     height: fit-content;
     margin: 0.5em 0.2em 0 0.2em;
 }
-.whosTurn
-{
+.whosTurnDiv {
+    min-width: 30vw;
+    margin: auto;
+}
+.whosTurn {
     width: fit-content;
     margin: auto;
     font-size: 1.8em;
@@ -37,22 +36,21 @@ body
     border-radius: 10px;
     background-color: rgb(33, 25, 43);
 }
-.infos
-{
-    margin-top: 1em;
-    max-width: 400px;
+.infos {
+    min-width: 30vw;
+    margin: 1em auto 0 auto;
 }
-.firstMovePopup
-{
+.firstMovePopup {
     width: fit-content;
+    max-width: 350px;
+    margin: auto;
     height: fit-content;
     font-size: 1.7em;
     padding: 0.5em;
     border-radius: 10px;
     background-color: rgb(33, 25, 43);
 }
-.gameEndedPopup
-{
+.gameEndedPopup {
     width: fit-content;
     height: fit-content;
     margin: auto;
@@ -61,7 +59,6 @@ body
     border-radius: 10px;
     background-color: rgb(33, 25, 43);
 }
-.gameEndedPopup p
-{
-    font-size: 2.5em;
+.gameEndedPopup p {
+    font-size: 2em;
 }
