@@ -16,7 +16,7 @@ import { ScoresService } from '../app/services/scores.service';
         animate('300ms', style({ opacity: 0 }))
       ])
     ]),
-  ]
+  ],
 })
 export class AppComponent {
   title = 'rowmaster';

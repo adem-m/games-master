@@ -17,11 +17,16 @@
                     <mat-form-field style="text-align: right;" color="accent" appearance="legacy">
                         <mat-label>Joueur 1</mat-label>
                         <input matInput>
+                        <mat-hint><img src="../assets/blueToken.png" width="15px"><img src="../assets/img/xIcon.png"
+                                width="17px"></mat-hint>
                     </mat-form-field>
-                    <span class="score">{{ getScore1() }} - {{ getScore2() }}</span>
+                    <span class="score" #tooltip="matTooltip" matTooltip="Entrez vos noms ci-dessus !">{{ getScore1() }}
+                        - {{ getScore2() }}</span>
                     <mat-form-field color="accent" appearance="legacy">
                         <mat-label>Joueur 2</mat-label>
                         <input matInput>
+                        <mat-hint align="end"><img src="../assets/img/oIcon.png" width="17px"><img src="../assets/purpleToken.png"
+                                width="15px"></mat-hint>
                     </mat-form-field>
                 </div>
             </nav>

@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatInputModule } from '@angular/material/input';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   providers: [
     ScoresService,
