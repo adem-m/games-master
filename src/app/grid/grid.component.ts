@@ -164,6 +164,20 @@ export class GridComponent implements OnInit {
     this.thereIsAWinner = false;
     this.winnerName = '';
   }
+  whosTurn() {
+    if (this.count % 2 === 0) {
+      return this.service.j1Name;
+    }
+    return this.service.j2Name;
+  }
+  apostrophe() {
+    for (const vowel of this.service.vowels) {
+      if (this.whosTurn()[0] === vowel) {
+        return '\'';
+      }
+    }
+    return 'e ';
+  }
   onMouseOver(index) {
     this.buttons[index] = 'assets/arrow.svg';
   }

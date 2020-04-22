@@ -1,8 +1,9 @@
 export class ScoresService {
     j1Score = 0;
     j2Score = 0;
-    j1Name;
-    j2Name;
+    j1Name = 'Joueur 1';
+    j2Name = 'Joueur 2';
+    vowels = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U', 'y', 'Y'];
 
     j1ScoreUpdate() {
         this.j1Score++;

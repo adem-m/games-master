@@ -40,4 +40,24 @@ export class AppComponent {
   getScore2() {
     return this.service.j2Score;
   }
+  getName1() {
+    return this.service.j1Name;
+  }
+  getName2() {
+    return this.service.j2Name;
+  }
+  setName1(name: string) {
+    if (name.length === 0) {
+      this.service.j1Name = 'Joueur 1';
+    } else {
+      this.service.j1Name = name;
+    }
+  }
+  setName2(name: string) {
+    if (name.length === 0) {
+      this.service.j2Name = 'Joueur 2';
+    } else {
+      this.service.j2Name = name;
+    }
+  }
 }

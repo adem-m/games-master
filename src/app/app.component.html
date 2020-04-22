@@ -16,7 +16,7 @@
                 <div class="scoreBox">
                     <mat-form-field style="text-align: right;" color="accent" appearance="legacy">
                         <mat-label>Joueur 1</mat-label>
-                        <input matInput>
+                        <input matInput maxlength="12" #input1 (input)="setName1(input1.value)">
                         <mat-hint><img src="assets/blueToken.png" width="15px"><img src="assets/img/xIcon.png"
                                 width="17px"></mat-hint>
                     </mat-form-field>
@@ -24,7 +24,7 @@
                         - {{ getScore2() }}</span>
                     <mat-form-field color="accent" appearance="legacy">
                         <mat-label>Joueur 2</mat-label>
-                        <input matInput>
+                        <input matInput maxlength="12" #input2 (input)="setName2(input2.value)">
                         <mat-hint align="end"><img src="assets/img/oIcon.png" width="17px"><img src="assets/purpleToken.png"
                                 width="15px"></mat-hint>
                     </mat-form-field>

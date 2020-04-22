@@ -112,7 +112,21 @@ export class MorpionComponent implements OnInit {
     this.ended = false;
     this.draw = false;
   }
-  whosNext() {
+  whosNextName() {
+    if (this.round % 2 === 1) {
+      return this.service.j1Name;
+    }
+    return this.service.j2Name;
+  }
+  apostrophe() {
+    for (const vowel of this.service.vowels) {
+      if (this.whosNextName()[0] === vowel) {
+        return '\'';
+      }
+    }
+    return 'e ';
+  }
+  whosNextImg() {
     if (this.round % 2 === 0) {
       return 'assets/img/oIcon.png';
     } else {
