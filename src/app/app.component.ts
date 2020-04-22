@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
 import { ScoresService } from '../app/services/scores.service';
+import { MatTooltipModule, TooltipComponent } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ import { ScoresService } from '../app/services/scores.service';
     ]),
   ],
 })
+
 export class AppComponent {
   title = 'rowmaster';
   rules = false;
