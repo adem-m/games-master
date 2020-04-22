@@ -11,7 +11,7 @@
                 <a class="navbar-brand" href=""><img src="assets/blueToken.png" style="width:50px;"></a>
                 <button mat-raised-button color="accent" routerLink="row-master">Row Master</button>
                 <button mat-raised-button color="accent" routerLink="grid-master">Grid Master</button>
-                <button mat-raised-button (click)="openRules(index)">Règles</button>
+                <button mat-raised-button (click)="openRules()">Règles</button>
                 <div class="spacer"></div>
                 <div class="scoreBox">
                     <mat-form-field style="text-align: right;" color="accent" appearance="legacy">
@@ -44,7 +44,7 @@
                             <mat-icon>close</mat-icon>
                         </button>
                     </div>
-                    <mat-tab-group dynamicHeight color="accent" selectedIndex="{{ index }}">
+                    <mat-tab-group dynamicHeight color="accent" selectedIndex="{{ getIndex() }}">
                         <mat-tab label="Row Master">
                             <div class="example-small-box mat-elevation-z4">
                                 <h4>Objectif</h4>

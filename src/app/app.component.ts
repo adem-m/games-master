@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 import { ScoresService } from '../app/services/scores.service';
 
 @Component({
@@ -22,13 +23,20 @@ export class AppComponent {
   title = 'rowmaster';
   rules = false;
   isActive = false;
-  index = 0;
+  active;
 
-  constructor(private service: ScoresService) {
+  constructor(private service: ScoresService, private router: Router) {
   }
 
-  openRules(i: number) {
-    this.index = i;
+  OnInit(): void {
+  }
+  getIndex() {
+    if (this.router.url === '/grid-master') {
+      return 1;
+    }
+    return 0;
+  }
+  openRules() {
     this.rules = true;
   }
   closeRules() {
