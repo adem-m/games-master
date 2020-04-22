@@ -11,8 +11,8 @@
     <button type="button" class="btn btn-light" (click)="whatSign(8)"><img src="{{ signes.get(8) }}"></button>
   </div>
   <div class="end">
-    <p class="whoPlays" *ngIf="!ended">Au tour d{{ apostrophe() }}{{ whosNextName() }}<img src="{{ whosNextImg() }}"></p>
-    <p *ngIf="ended">{{ endText }} <span *ngIf="ended && !draw"><img
+    <p class="whoPlays" *ngIf="!ended">Au tour d{{ apostrophe() }}{{ whosNextName() }} <img src="{{ whosNextImg() }}" height="50px"></p>
+    <p *ngIf="ended">{{ endText }}{{ apostrophe(1) }}{{ whosNextName(1) }} <span *ngIf="ended && !draw"><img
           src="{{ signes.get(this.lastIndex) }}"></span><br /> <button mat-raised-button color="accent"
         (click)="playAgain()">Rejouer</button>
     </p>

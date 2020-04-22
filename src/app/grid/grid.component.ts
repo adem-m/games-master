@@ -164,15 +164,15 @@ export class GridComponent implements OnInit {
     this.thereIsAWinner = false;
     this.winnerName = '';
   }
-  whosTurn() {
-    if (this.count % 2 === 0) {
+  whosTurn(i = 0) {
+    if ((this.count + i) % 2 === 0) {
       return this.service.j1Name;
     }
     return this.service.j2Name;
   }
-  apostrophe() {
+  apostrophe(i = 0) {
     for (const vowel of this.service.vowels) {
-      if (this.whosTurn()[0] === vowel) {
+      if (this.whosTurn(i)[0] === vowel) {
         return '\'';
       }
     }

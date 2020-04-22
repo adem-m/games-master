@@ -16,7 +16,7 @@
         </div>
         <div [@fade]="thereIsAWinner || draw ? 'visible' : 'invisible'" class="gameEndedPopup">
             <p *ngIf="draw">Match nul</p>
-            <p *ngIf="thereIsAWinner">Victoire de <img src="{{ winnerName }}" width="50px"></p>
+            <p *ngIf="thereIsAWinner">Victoire d{{ apostrophe(1) }}{{ whosTurn(1) }} <img src="{{ winnerName }}" width="50px"></p>
             <button mat-raised-button color="accent" (click)="playAgain()">Rejouer</button>
         </div>
     </div>

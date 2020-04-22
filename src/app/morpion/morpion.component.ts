@@ -86,7 +86,7 @@ export class MorpionComponent implements OnInit {
       this.ended = true;
     }
     if (this.ended) {
-      this.endText = 'Victoire de ';
+      this.endText = 'Victoire d';
       if (this.signes.get(this.lastIndex) === 'assets/img/oIcon.png') {
         this.service.j2ScoreUpdate();
       } else if (this.signes.get(this.lastIndex) === 'assets/img/xIcon.png') {
@@ -112,15 +112,15 @@ export class MorpionComponent implements OnInit {
     this.ended = false;
     this.draw = false;
   }
-  whosNextName() {
-    if (this.round % 2 === 1) {
+  whosNextName(i = 0) {
+    if ((this.round + i) % 2 === 1) {
       return this.service.j1Name;
     }
     return this.service.j2Name;
   }
-  apostrophe() {
+  apostrophe(i = 0) {
     for (const vowel of this.service.vowels) {
-      if (this.whosNextName()[0] === vowel) {
+      if (this.whosNextName(i)[0] === vowel) {
         return '\'';
       }
     }
