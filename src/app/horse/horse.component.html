@@ -1,0 +1,6 @@
+<div class="game">
+    <mat-grid-list cols="15">
+        <mat-grid-tile *ngFor="let case of cases"><img *ngIf="case.content !== null" src="{{ case.content }}"
+                height="100%"></mat-grid-tile>
+    </mat-grid-list>
+</div>
