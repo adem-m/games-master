@@ -1,9 +1,16 @@
+.app {
+    display: flex;
+    flex-wrap: wrap;
+}
 .game {
-    max-width: 530px;
+    width: 530px;
     margin: auto;
     padding: 1em;
     border-radius: 10px;
     background-color: rgb(24, 24, 24);
+}
+button {
+    height: fit-content;
 }
 // img {
 //     transform: rotate(90deg);
