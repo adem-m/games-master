@@ -32,19 +32,19 @@ export class HorseComponent implements OnInit {
     for (let i = 0; i < this.bases.length; i++) {
       if (i < 4) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 8, 1,
-          'assets/img/red-horse.png', this.cases, this.order, 'start'));
+          'assets/img/red-horse.png', this.cases, this.order, 'start', this.horses));
       }
       if (i > 3 && i < 8) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 134, 15,
-          'assets/img/green-horse.png', this.cases, this.order, 'start'));
+          'assets/img/green-horse.png', this.cases, this.order, 'start', this.horses));
       }
       if (i > 7 && i < 12) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 216, 29,
-          'assets/img/yellow-horse.png', this.cases, this.order, 'start'));
+          'assets/img/yellow-horse.png', this.cases, this.order, 'start', this.horses));
       }
       if (i > 11) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 90, 44,
-          'assets/img/blue-horse.png', this.cases, this.order, 'start'));
+          'assets/img/blue-horse.png', this.cases, this.order, 'start', this.horses));
       }
     }
     this.cases[112].content = 'assets/img/end-case.png';
@@ -54,9 +54,39 @@ export class HorseComponent implements OnInit {
     this.cases[216].content = 'assets/img/yellow-case.png';
     this.cases[90].content = 'assets/img/blue-case.png';
 
+    this.cases[22].content = 'assets/img/red-one.png';
+    this.cases[37].content = 'assets/img/red-two.png';
+    this.cases[52].content = 'assets/img/red-three.png';
+    this.cases[67].content = 'assets/img/red-four.png';
+    this.cases[82].content = 'assets/img/red-five.png';
+    this.cases[97].content = 'assets/img/red-six.png';
+
+    this.cases[118].content = 'assets/img/green-one.png';
+    this.cases[117].content = 'assets/img/green-two.png';
+    this.cases[116].content = 'assets/img/green-three.png';
+    this.cases[115].content = 'assets/img/green-four.png';
+    this.cases[114].content = 'assets/img/green-five.png';
+    this.cases[113].content = 'assets/img/green-six.png';
+
+    this.cases[202].content = 'assets/img/yellow-one.png';
+    this.cases[187].content = 'assets/img/yellow-two.png';
+    this.cases[172].content = 'assets/img/yellow-three.png';
+    this.cases[157].content = 'assets/img/yellow-four.png';
+    this.cases[142].content = 'assets/img/yellow-five.png';
+    this.cases[127].content = 'assets/img/yellow-six.png';
+
+    this.cases[106].content = 'assets/img/blue-one.png';
+    this.cases[107].content = 'assets/img/blue-two.png';
+    this.cases[108].content = 'assets/img/blue-three.png';
+    this.cases[109].content = 'assets/img/blue-four.png';
+    this.cases[110].content = 'assets/img/blue-five.png';
+    this.cases[111].content = 'assets/img/blue-six.png';
+
   }
 
   ngOnInit(): void {
+    this.horses[8].move(6);
+    this.horses[8].move(6);
   }
   move(id, num) {
     this.horses[id].move(num);
@@ -66,5 +96,4 @@ export class HorseComponent implements OnInit {
     this.dice = num;
     this.move(id, num);
   }
-
 }
