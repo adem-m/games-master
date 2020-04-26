@@ -32,19 +32,19 @@ export class HorseComponent implements OnInit {
     for (let i = 0; i < this.bases.length; i++) {
       if (i < 4) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 8, 1,
-          'assets/img/red-horse.png', this.cases, this.order, 'start', this.horses));
+          'assets/img/red-horse.png', this.cases, this.order, [7, 22, 37, 52, 67, 82, 97], 'start', this.horses));
       }
       if (i > 3 && i < 8) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 134, 15,
-          'assets/img/green-horse.png', this.cases, this.order, 'start', this.horses));
+          'assets/img/green-horse.png', this.cases, this.order, [119, 118, 117, 116, 115, 114, 113], 'start', this.horses));
       }
       if (i > 7 && i < 12) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 216, 29,
-          'assets/img/yellow-horse.png', this.cases, this.order, 'start', this.horses));
+          'assets/img/yellow-horse.png', this.cases, this.order, [217, 202, 187, 172, 157, 142, 127], 'start', this.horses));
       }
       if (i > 11) {
-        this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 90, 44,
-          'assets/img/blue-horse.png', this.cases, this.order, 'start', this.horses));
+        this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 90, 43,
+          'assets/img/blue-horse.png', this.cases, this.order, [105, 106, 107, 108, 109, 110, 111], 'start', this.horses));
       }
     }
     this.cases[112].content = 'assets/img/end-case.png';
@@ -81,12 +81,10 @@ export class HorseComponent implements OnInit {
     this.cases[109].content = 'assets/img/blue-four.png';
     this.cases[110].content = 'assets/img/blue-five.png';
     this.cases[111].content = 'assets/img/blue-six.png';
-
   }
 
   ngOnInit(): void {
-    this.horses[8].move(6);
-    this.horses[8].move(6);
+    // this.horses[0].move(6);
   }
   move(id, num) {
     this.horses[id].move(num);
