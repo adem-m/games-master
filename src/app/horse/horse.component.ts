@@ -16,10 +16,16 @@ export class HorseComponent implements OnInit {
     126, 125, 124, 123, 122, 121, 120, 105, 90, 91, 92, 93, 94, 95, 96, 81, 66, 51, 36, 21, 6];
   bases = [27, 28, 42, 43, 192, 193, 207, 208, 181, 182, 196, 197, 16, 17, 31, 32];
   horses = [];
-  dice = 0;
+  horsesImg = [];
+  dice;
+  dicesImg = [];
+  turn = 0;
 
   constructor() {
-
+    this.horsesImg.push('assets/img/red-horse.png', 'assets/img/green-horse.png',
+      'assets/img/yellow-horse.png', 'assets/img/blue-horse.png');
+    this.dicesImg.push('assets/img/dice-one.png', 'assets/img/dice-two.png', 'assets/img/dice-three.png',
+    'assets/img/dice-four.png', 'assets/img/dice-five.png', 'assets/img/dice-six.png');
     for (let i = 0; i < 15 * 15; i++) {
       this.cases.push(new Case(i));
       for (const num of this.order) {
@@ -84,14 +90,24 @@ export class HorseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.horses[0].move(6);
   }
   move(id, num) {
     this.horses[id].move(num);
   }
-  play(id) {
+  play() {
     const num = Math.floor(Math.random() * Math.floor(6) + 1);
     this.dice = num;
-    this.move(id, num);
+    this.move(4 * (this.turn % 4), num);
+    if (num !== 6) {
+      this.turn++;
+    }
+  }
+  thereIsAWinner(): boolean {
+    for (let i = 0; i < this.horses.length - 1; i += 4) {
+      if (this.horses[i].won && this.horses[i + 1].won && this.horses[i + 2].won && this.horses[i + 3].won) {
+        return true;
+      }
+    }
+    return false;
   }
 }
