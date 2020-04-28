@@ -1,4 +1,5 @@
 import { Case } from './case';
+import { ScoresService } from './services/scores.service';
 
 export class Player {
     id: number;
@@ -16,7 +17,8 @@ export class Player {
     zone: string;
     won: boolean;
 
-    constructor(id, last, current, init, start, startIndex: number, img, cases: Case[], order, endOrder: number[], zone, horses: Player[]) {
+    constructor(id, last, current, init, start, startIndex: number, img, cases: Case[],
+                order, endOrder: number[], zone, horses: Player[], private service: ScoresService) {
         this.id = id;
         this.lastPosition = last;
         this.currentPosition = current;
@@ -33,12 +35,14 @@ export class Player {
         this.cases[this.initPosition].content = img;
     }
     move(num: number) {
-        if (this.zone === 'start' && num === 6) {
-            this.startMove();
-        } else if (this.zone === 'game' && this.limitCheck(num)) {
-            this.gameMove(num);
-        } else if (this.zone === 'end') {
-            this.endMove(num);
+        if (!this.won) {
+            if (this.zone === 'start' && num === 6) {
+                this.startMove();
+            } else if (this.zone === 'game' && this.limitCheck(num)) {
+                this.gameMove(num);
+            } else if (this.zone === 'end') {
+                this.endMove(num);
+            }
         }
     }
     private startMove() {
@@ -91,6 +95,8 @@ export class Player {
         if (this.endOrder.indexOf(this.currentPosition) === 6 && num === 6) {
             this.won = true;
             this.cases[this.currentPosition].content = this.lastImg;
+            this.currentPosition = 0;
+            this.service.horsesScoreUpdate(Math.floor(this.id / 4));
         } else if (this.endOrder.indexOf(this.currentPosition) === num - 1 && this.cases[this.endOrder[num]].content !== this.img) {
             this.currentPosition = this.endOrder[num];
         }

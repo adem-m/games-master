@@ -9,6 +9,54 @@
     border-radius: 10px;
     background-color: rgb(24, 24, 24);
 }
-button {
+.infos {
+    display: flex;
+    flex-flow: column;
     height: fit-content;
+    width: 300px;
+    margin: auto;
+    background-color: rgb(33, 25, 43);
+    padding: 0.2em 0.5em;
+    border-radius: 10px;
+}
+.infos * {
+    text-align: center;
+}
+.whosTurn {
+    font-size: 1.8em;
+}
+.playAgain {
+    font-size: 1em;
+}
+.dice {
+    margin: auto;
+}
+button {
+    margin: 0.5em 0;
+}
+.score {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    font-size: 1.8em;
+    padding: 0.2em 0.5em;
+    border-radius: 10px;
+    background-color: rgb(33, 25, 43);
+    text-align: center;
+}
+.eachScore {
+    display: flex;
+    flex-flow: column;
+    margin: 0.2em 0.2em 0 0.2em;
+}
+.leftSide {
+    min-width: 30vw;
+    height: fit-content;
+    margin: auto;
+}
+.rightSide {
+    min-width: 30vw;
+    height: fit-content;
+    margin: auto;
 }

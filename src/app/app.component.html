@@ -9,9 +9,15 @@
         <header>
             <nav class="navbar navbar-expand-sm navbar-dark">
                 <a class="navbar-brand" href=""><img src="assets/blueToken.png" style="width:50px;"></a>
-                <button mat-raised-button color="accent" routerLink="row-master">Row Master</button>
-                <button mat-raised-button color="accent" routerLink="grid-master">Grid Master</button>
-                <button mat-raised-button color="accent" routerLink="horse-master">Horse Master</button>
+                <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Jeux</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="horse-master"><img src="assets/img/red-horse.png"
+                        height="30px" style="margin-right: 1em;">Horse Master</button>
+                    <button mat-menu-item routerLink="row-master"><img src="assets/blueToken.png"
+                        height="30px" style="margin-right: 1em;">Row Master</button>
+                    <button mat-menu-item routerLink="grid-master"><img src="assets/img/xIcon.png"
+                        height="30px" style="margin-right: 1em;">Grid Master</button>
+                </mat-menu>
                 <button mat-raised-button (click)="openRules()">Règles</button>
                 <div class="spacer"></div>
                 <div class="scoreBox">
@@ -26,8 +32,8 @@
                     <mat-form-field color="accent" appearance="legacy">
                         <mat-label>Joueur 2</mat-label>
                         <input matInput maxlength="12" #input2 (input)="setName2(input2.value)">
-                        <mat-hint align="end"><img src="assets/img/oIcon.png" width="17px"><img src="assets/purpleToken.png"
-                                width="15px"></mat-hint>
+                        <mat-hint align="end"><img src="assets/img/oIcon.png" width="17px"><img
+                                src="assets/purpleToken.png" width="15px"></mat-hint>
                     </mat-form-field>
                 </div>
             </nav>

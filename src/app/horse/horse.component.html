@@ -1,12 +1,22 @@
 <div class="app">
-    <button (click)="play()" mat-raised-button>Jouer</button>
-    <img src="{{ dicesImg[dice - 1] }}" height="50px">
-    <p *ngIf="dice === 6">Vous rejouez !</p>
+    <div class="leftSide">
+        <div class="infos">
+            <div class="whosTurn">Au tour de <img src="{{ horsesImg[turn % 4] }}" height="30px"></div>
+            <img src="{{ dicesImg[dice - 1] }}" width="50px" class="dice">
+            <span *ngIf="dice === 6" class="playAgain">Vous rejouez !</span>
+            <button (click)="play()" mat-raised-button>Lancer le dé</button>
+        </div>
+    </div>
     <div class="game">
         <mat-grid-list cols="15">
             <mat-grid-tile *ngFor="let case of cases"><img *ngIf="case.content !== null" src="{{ case.content }}"
                     height="100%"></mat-grid-tile>
         </mat-grid-list>
     </div>
-    <div>Au tour de <img src="{{ horsesImg[turn % 4] }}" height="30px"></div>
+    <div class="rightSide">
+        <div class="score">
+            <div class="eachScore" *ngFor="score of scores; index as i"><img src="{{ horsesImg[i] }}" height="40px">
+                {{ getScore(i) }}</div>
+        </div>
+    </div>
 </div>

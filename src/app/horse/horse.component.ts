@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScoresService } from '../services/scores.service';
 import { Case } from '../case';
 import { Player } from '../player';
 
@@ -19,13 +20,15 @@ export class HorseComponent implements OnInit {
   horsesImg = [];
   dice;
   dicesImg = [];
+  scores = [0, 0, 0, 0];
   turn = 0;
+  gameEnded = false;
 
-  constructor() {
+  constructor(private service: ScoresService) {
     this.horsesImg.push('assets/img/red-horse.png', 'assets/img/green-horse.png',
       'assets/img/yellow-horse.png', 'assets/img/blue-horse.png');
     this.dicesImg.push('assets/img/dice-one.png', 'assets/img/dice-two.png', 'assets/img/dice-three.png',
-    'assets/img/dice-four.png', 'assets/img/dice-five.png', 'assets/img/dice-six.png');
+      'assets/img/dice-four.png', 'assets/img/dice-five.png', 'assets/img/dice-six.png');
     for (let i = 0; i < 15 * 15; i++) {
       this.cases.push(new Case(i));
       for (const num of this.order) {
@@ -38,19 +41,19 @@ export class HorseComponent implements OnInit {
     for (let i = 0; i < this.bases.length; i++) {
       if (i < 4) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 8, 1,
-          'assets/img/red-horse.png', this.cases, this.order, [7, 22, 37, 52, 67, 82, 97], 'start', this.horses));
+          'assets/img/red-horse.png', this.cases, this.order, [7, 22, 37, 52, 67, 82, 97], 'start', this.horses, service));
       }
       if (i > 3 && i < 8) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 134, 15,
-          'assets/img/green-horse.png', this.cases, this.order, [119, 118, 117, 116, 115, 114, 113], 'start', this.horses));
+          'assets/img/green-horse.png', this.cases, this.order, [119, 118, 117, 116, 115, 114, 113], 'start', this.horses, service));
       }
       if (i > 7 && i < 12) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 216, 29,
-          'assets/img/yellow-horse.png', this.cases, this.order, [217, 202, 187, 172, 157, 142, 127], 'start', this.horses));
+          'assets/img/yellow-horse.png', this.cases, this.order, [217, 202, 187, 172, 157, 142, 127], 'start', this.horses, service));
       }
       if (i > 11) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 90, 43,
-          'assets/img/blue-horse.png', this.cases, this.order, [105, 106, 107, 108, 109, 110, 111], 'start', this.horses));
+          'assets/img/blue-horse.png', this.cases, this.order, [105, 106, 107, 108, 109, 110, 111], 'start', this.horses, service));
       }
     }
     this.cases[112].content = 'assets/img/end-case.png';
@@ -98,16 +101,11 @@ export class HorseComponent implements OnInit {
     const num = Math.floor(Math.random() * Math.floor(6) + 1);
     this.dice = num;
     this.move(4 * (this.turn % 4), num);
-    if (num !== 6) {
+    if (num !== 6 || this.horses[4 * (this.turn % 4)].won) {
       this.turn++;
     }
   }
-  thereIsAWinner(): boolean {
-    for (let i = 0; i < this.horses.length - 1; i += 4) {
-      if (this.horses[i].won && this.horses[i + 1].won && this.horses[i + 2].won && this.horses[i + 3].won) {
-        return true;
-      }
-    }
-    return false;
+  getScore(i: number) {
+    return this.service.horsesScore[i];
   }
 }
