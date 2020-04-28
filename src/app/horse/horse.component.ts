@@ -16,13 +16,13 @@ export class HorseComponent implements OnInit {
     131, 130, 129, 128, 143, 158, 173, 188, 203, 218, 217, 216, 201, 186, 171, 156, 141,
     126, 125, 124, 123, 122, 121, 120, 105, 90, 91, 92, 93, 94, 95, 96, 81, 66, 51, 36, 21, 6];
   bases = [27, 28, 42, 43, 192, 193, 207, 208, 181, 182, 196, 197, 16, 17, 31, 32];
-  horses = [];
+  horses: Player[] = [];
   horsesImg = [];
   dice;
   dicesImg = [];
-  scores = [0, 0, 0, 0];
   turn = 0;
   gameEnded = false;
+  canPlay = false;
 
   constructor(private service: ScoresService) {
     this.horsesImg.push('assets/img/red-horse.png', 'assets/img/green-horse.png',
@@ -41,19 +41,23 @@ export class HorseComponent implements OnInit {
     for (let i = 0; i < this.bases.length; i++) {
       if (i < 4) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 8, 1,
-          'assets/img/red-horse.png', this.cases, this.order, [7, 22, 37, 52, 67, 82, 97], 'start', this.horses, service));
+          'assets/img/red-horse.png', 'assets/img/red-case.png',
+          this.cases, this.order, [7, 22, 37, 52, 67, 82, 97], 'start', this.horses, service));
       }
       if (i > 3 && i < 8) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 134, 15,
-          'assets/img/green-horse.png', this.cases, this.order, [119, 118, 117, 116, 115, 114, 113], 'start', this.horses, service));
+          'assets/img/green-horse.png', 'assets/img/green-case.png',
+          this.cases, this.order, [119, 118, 117, 116, 115, 114, 113], 'start', this.horses, service));
       }
       if (i > 7 && i < 12) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 216, 29,
-          'assets/img/yellow-horse.png', this.cases, this.order, [217, 202, 187, 172, 157, 142, 127], 'start', this.horses, service));
+          'assets/img/yellow-horse.png', 'assets/img/yellow-case.png',
+          this.cases, this.order, [217, 202, 187, 172, 157, 142, 127], 'start', this.horses, service));
       }
       if (i > 11) {
         this.horses.push(new Player(i, 0, this.bases[i], this.bases[i], 90, 43,
-          'assets/img/blue-horse.png', this.cases, this.order, [105, 106, 107, 108, 109, 110, 111], 'start', this.horses, service));
+          'assets/img/blue-horse.png', 'assets/img/blue-case.png',
+          this.cases, this.order, [105, 106, 107, 108, 109, 110, 111], 'start', this.horses, service));
       }
     }
     this.cases[112].content = 'assets/img/end-case.png';
@@ -94,18 +98,43 @@ export class HorseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  move(id, num) {
-    this.horses[id].move(num);
+  private delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  heCanPlay(): boolean {
+    const img = this.horsesImg[this.turn % 4];
+    for (const horse of this.horses) {
+      if (horse.img === img && horse.zone !== 'start') {
+        return true;
+      }
+    }
+    return false;
   }
   play() {
-    const num = Math.floor(Math.random() * Math.floor(6) + 1);
-    this.dice = num;
-    this.move(4 * (this.turn % 4), num);
-    if (num !== 6 || this.horses[4 * (this.turn % 4)].won) {
+    let num;
+    for (let i = 0; i < 15; i++) {
+      num = Math.floor(Math.random() * Math.floor(6) + 1);
+      this.dice = num;
+    }
+    this.canPlay = true;
+    if (num !== 6 && !this.heCanPlay()) {
       this.turn++;
+      this.canPlay = false;
+      this.dice = 0;
     }
   }
-  getScore(i: number) {
-    return this.service.horsesScore[i];
+  convert(i: number) {
+    if (this.canPlay) {
+      for (const horse of this.horses) {
+        if (horse.currentPosition === i && horse.img === this.horsesImg[this.turn % 4]) {
+          horse.move(this.dice);
+          if (this.dice !== 6 || horse.won) {
+            this.turn++;
+          }
+          this.canPlay = false;
+          this.dice = 0;
+        }
+      }
+    }
   }
 }

@@ -38,6 +38,20 @@ input {
     color: white;
     font-size: 2em;
 }
+.horseScore {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    font-size: 1.3em;
+    text-align: center;
+    color: white;
+}
+.eachScore {
+    display: flex;
+    flex-flow: column;
+    margin: 0.2em 0.2em 0 0.2em;
+}
 .topline {
     height: 0.3em;
     background-color: rgb(82, 168, 225);

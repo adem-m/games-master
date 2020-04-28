@@ -20,7 +20,11 @@
                 </mat-menu>
                 <button mat-raised-button (click)="openRules()">Règles</button>
                 <div class="spacer"></div>
-                <div class="scoreBox">
+                <div class="horseScore" *ngIf="getIndex() === 2">
+                    <div class="eachScore" *ngFor="score of scores; index as i"><img src="{{ horsesImg[i] }}" height="35px">
+                        {{ getScore(i) }}</div>
+                </div>
+                <div class="scoreBox" *ngIf="getIndex() !== 2">
                     <mat-form-field style="text-align: right;" color="accent" appearance="legacy">
                         <mat-label>Joueur 1</mat-label>
                         <input matInput maxlength="12" #input1 (input)="setName1(input1.value)">

@@ -8,6 +8,7 @@ export class Player {
     initPosition: number;
     startPosition: number;
     startIndex: number;
+    startImg: string;
     lastImg: string;
     img: string;
     cases: Case[];
@@ -17,8 +18,9 @@ export class Player {
     zone: string;
     won: boolean;
 
-    constructor(id, last, current, init, start, startIndex: number, img, cases: Case[],
-                order, endOrder: number[], zone, horses: Player[], private service: ScoresService) {
+    constructor(id, last, current, init, start, startIndex: number, img, startImg: string, cases: Case[],
+        // tslint:disable-next-line: align
+        order, endOrder: number[], zone, horses: Player[], private service: ScoresService) {
         this.id = id;
         this.lastPosition = last;
         this.currentPosition = current;
@@ -26,6 +28,7 @@ export class Player {
         this.startPosition = start;
         this.startIndex = startIndex;
         this.img = img;
+        this.startImg = startImg;
         this.cases = cases;
         this.order = order;
         this.endOrder = endOrder;
@@ -33,6 +36,9 @@ export class Player {
         this.horses = horses;
         this.won = false;
         this.cases[this.initPosition].content = img;
+    }
+    private delay(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
     move(num: number) {
         if (!this.won) {
@@ -46,24 +52,30 @@ export class Player {
         }
     }
     private startMove() {
-        this.lastPosition = this.currentPosition;
-        this.currentPosition = this.startPosition;
-        this.lastImg = this.cases[this.currentPosition].content;
-        this.zone = 'game';
-        this.cases[this.lastPosition].content = '';
-        this.cases[this.currentPosition].content = this.img;
+        if (this.cases[this.startPosition].content !== this.img) {
+            if (this.cases[this.startPosition].content !== this.startImg) {
+                this.startKill();
+            }
+            this.lastPosition = this.currentPosition;
+            this.currentPosition = this.startPosition;
+            this.lastImg = this.cases[this.currentPosition].content;
+            this.zone = 'game';
+            this.cases[this.lastPosition].content = '';
+            this.cases[this.currentPosition].content = this.img;
+        }
     }
-    private gameMove(num: number) {
+    private async gameMove(num: number) {
         this.enemyCheck(num);
         let direction = 1;
         for (let i = 1; i <= num; i++) {
+            await this.delay(300);
             let position;
             if (this.order.indexOf(this.currentPosition) + 1 === this.order.length) {
                 position = 0;
             } else {
                 position = this.order.indexOf(this.currentPosition) + 1;
             }
-            if (i !== num && this.isItAPlayer(this.cases[this.order[position]].content)) {
+            if (this.isItAPlayer(this.cases[this.order[position]].content)) {
                 if (direction === 1) {
                     direction = -1;
                 } else {
@@ -117,6 +129,13 @@ export class Player {
                 if (enemy.currentPosition === destination) {
                     enemy.back();
                 }
+            }
+        }
+    }
+    private startKill() {
+        for (const enemy of this.horses) {
+            if (enemy.currentPosition === this.startIndex) {
+                enemy.back();
             }
         }
     }

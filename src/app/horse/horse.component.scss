@@ -14,7 +14,7 @@
     flex-flow: column;
     height: fit-content;
     width: 300px;
-    margin: auto;
+    margin: 1em auto 0 auto;
     background-color: rgb(33, 25, 43);
     padding: 0.2em 0.5em;
     border-radius: 10px;
@@ -33,22 +33,6 @@
 }
 button {
     margin: 0.5em 0;
-}
-.score {
-    display: flex;
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    font-size: 1.8em;
-    padding: 0.2em 0.5em;
-    border-radius: 10px;
-    background-color: rgb(33, 25, 43);
-    text-align: center;
-}
-.eachScore {
-    display: flex;
-    flex-flow: column;
-    margin: 0.2em 0.2em 0 0.2em;
 }
 .leftSide {
     min-width: 30vw;

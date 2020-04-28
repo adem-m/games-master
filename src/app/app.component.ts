@@ -27,15 +27,25 @@ export class AppComponent {
   rules = false;
   isActive = false;
   active;
+  scores = [0, 0, 0, 0];
+  horsesImg = [];
 
   constructor(private service: ScoresService, private router: Router) {
+    this.horsesImg.push('assets/img/red-horse.png', 'assets/img/green-horse.png',
+      'assets/img/yellow-horse.png', 'assets/img/blue-horse.png');
   }
 
   OnInit(): void {
   }
+  getScore(i: number) {
+    return this.service.horsesScore[i];
+  }
   getIndex() {
     if (this.router.url === '/grid-master') {
       return 1;
+    }
+    if (this.router.url === '/horse-master') {
+      return 2;
     }
     return 0;
   }
