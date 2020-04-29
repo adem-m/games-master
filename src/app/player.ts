@@ -134,7 +134,7 @@ export class Player {
     }
     private startKill() {
         for (const enemy of this.horses) {
-            if (enemy.currentPosition === this.startIndex) {
+            if (enemy.currentPosition === this.startPosition) {
                 enemy.back();
             }
         }

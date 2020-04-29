@@ -7,12 +7,14 @@ html {
     height: fit-content;
 }
 .navbar {
-    height: fit-content;
+    display: flex;
     background-color: rgb(40, 40, 40);
-    padding-bottom: 0;
+    padding: 0.2em 1em;
 }
 .navbar button,
 a {
+    height: fit-content;
+    margin: auto;
     margin-right: 8px;
 }
 mat-form-field {
@@ -23,10 +25,6 @@ input {
 }
 .spacer {
     flex-grow: 1;
-}
-.navbar-brand.gameButton {
-    padding: 0.5em;
-    border-radius: 5px;
 }
 .scoreBox {
     max-width: 95%;

@@ -6,8 +6,8 @@
         <div class="column" *ngFor="let c of gridContent; index as i">
             <div *ngFor="let img of c"><img [@blink]="!img[1] ? 'visible' : 'invisible'" src="{{ img[0] }}"
                     width="100%"></div>
-            <button type="button" class="btn btn-secondary" (click)="placeToken(i)" (mouseover)="onMouseOver(i)"
-                (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="100%"></button>
+            <button mat-raised-button (click)="placeToken(i)" (mouseover)="onMouseOver(i)"
+                (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="100%" style="padding: 0.5em 0;"></button>
         </div>
     </div>
     <div class="infos">

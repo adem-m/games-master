@@ -23,6 +23,7 @@ export class HorseComponent implements OnInit {
   turn = 0;
   gameEnded = false;
   canPlay = false;
+  haventPlayed = true;
 
   constructor(private service: ScoresService) {
     this.horsesImg.push('assets/img/red-horse.png', 'assets/img/green-horse.png',
@@ -111,25 +112,29 @@ export class HorseComponent implements OnInit {
     return false;
   }
   async play() {
-    let num;
-    for (let i = 0; i < 15; i++) {
-      await this.delay(50);
-      num = Math.floor(Math.random() * Math.floor(6) + 1);
-      this.dice = num;
-    }
-    await this.delay(1000);
-    if (num !== 6 && !this.heCanPlay()) {
-      this.turn++;
-      this.canPlay = false;
-      this.dice = 0;
-    } else {
-      this.canPlay = true;
-    }
-    if (this.service.horsesScore[0] + this.service.horsesScore[1] + this.service.horsesScore[2] + this.service.horsesScore[3] > 11) {
-      this.gameEnded = true;
-    } else {
-      while (this.service.horsesScore[this.turn % 4] === 4) {
+    if (this.haventPlayed) {
+      this.haventPlayed = false;
+      let num;
+      for (let i = 0; i < 15; i++) {
+        await this.delay(50);
+        num = Math.floor(Math.random() * Math.floor(6) + 1);
+        this.dice = num;
+      }
+      if (num !== 6 && !this.heCanPlay()) {
+        await this.delay(1000);
         this.turn++;
+        this.canPlay = false;
+        this.haventPlayed = true;
+        this.dice = 0;
+      } else {
+        this.canPlay = true;
+      }
+      if (this.service.horsesScore[0] + this.service.horsesScore[1] + this.service.horsesScore[2] + this.service.horsesScore[3] > 11) {
+        this.gameEnded = true;
+      } else {
+        while (this.service.horsesScore[this.turn % 4] === 4) {
+          this.turn++;
+        }
       }
     }
   }
@@ -143,6 +148,7 @@ export class HorseComponent implements OnInit {
           }
           this.canPlay = false;
           this.dice = 0;
+          this.haventPlayed = true;
         }
       }
     }
