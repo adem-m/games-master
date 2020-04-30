@@ -7,11 +7,14 @@
         </mat-grid-list>
     </div>
     <div class="rightSide">
-        <div class="infos">
+        <div class="infos" *ngIf="!gameEnded">
             <div class="whosTurn">Au tour de <img src="{{ horsesImg[turn % 4] }}" height="30px"></div>
             <img src="{{ dicesImg[dice - 1] }}" width="50px" class="dice">
             <span *ngIf="dice === 6 && canPlay" class="playAgain">Vous rejouez !</span>
             <button (click)="play()" mat-raised-button>Lancer le dé</button>
+        </div>
+        <div class="infos" *ngIf="gameEnded">
+            <div class="whosTurn">Partie terminée</div>
         </div>
     </div>
 </div>

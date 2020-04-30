@@ -8,6 +8,7 @@ html {
 }
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     background-color: rgb(40, 40, 40);
     padding: 0.2em 1em;
 }
@@ -60,7 +61,7 @@ body {
 .base {
     height: fit-content;
     background-color: rgb(51, 51, 51);
-    padding-top: 3vw;
+    padding-top: 2.7vw;
     padding-bottom: 1em;
 }
 .botline {
@@ -96,22 +97,45 @@ footer p {
     z-index: 2;
     opacity: 1;
     position: absolute;
-    top: 20vh;
+    top: 10vh;
     left: 1vw;
     right: 1vw;
     width: fit-content;
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     padding: 1em;
     border-radius: 10px;
     background-color: rgb(33, 25, 43);
 }
-.rulesPopup h4 {
-    margin-top: 1em;
+.rulesContent {
+    max-height: 60vh;
+    overflow: auto;
+    padding-right: 1em;
+}
+h1 {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.6em;
+}
+h2 {
+    background-color: rgb(51, 51, 51);
+    width: fit-content;
+    padding: 0.3em;
+    border-radius: 5px;
+    margin-block-start: 1.3em;
+    margin-block-end: 0.5em;
+}
+h3 {
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+h6 {
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+    font-style: italic;
 }
 .rulesPopupHeader {
     display: flex;
 }
-mat-hint{
+mat-hint {
     margin-top: 0;
 }

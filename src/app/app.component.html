@@ -6,17 +6,18 @@
                 <a class="navbar-brand" href=""><img src="assets/blueToken.png" style="width:50px;"></a>
                 <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Jeux</button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item routerLink="horse-master"><img src="assets/img/red-horse.png"
-                        height="30px" style="margin-right: 1em;">Horse Master</button>
-                    <button mat-menu-item routerLink="row-master"><img src="assets/blueToken.png"
-                        height="30px" style="margin-right: 1em;">Row Master</button>
-                    <button mat-menu-item routerLink="grid-master"><img src="assets/img/xIcon.png"
-                        height="30px" style="margin-right: 1em;">Grid Master</button>
+                    <button mat-menu-item routerLink="horse-master"><img src="assets/img/red-horse.png" height="30px"
+                            style="margin-right: 1em;">Horse Master</button>
+                    <button mat-menu-item routerLink="row-master"><img src="assets/blueToken.png" height="30px"
+                            style="margin-right: 1em;">Row Master</button>
+                    <button mat-menu-item routerLink="grid-master"><img src="assets/img/xIcon.png" height="30px"
+                            style="margin-right: 1em;">Grid Master</button>
                 </mat-menu>
                 <button mat-raised-button (click)="openRules()">Règles</button>
                 <div class="spacer"></div>
                 <div class="horseScore" *ngIf="getIndex() === 2">
-                    <div class="eachScore" *ngFor="score of scores; index as i"><img src="{{ horsesImg[i] }}" height="35px">
+                    <div class="eachScore" *ngFor="score of scores; index as i"><img src="{{ horsesImg[i] }}"
+                            height="35px">
                         {{ getScore(i) }}</div>
                 </div>
                 <div class="scoreBox" *ngIf="getIndex() !== 2">
@@ -44,7 +45,7 @@
                 <div class="rulesBg" (click)="closeRules()"></div>
                 <div class="rulesPopup">
                     <div class="rulesPopupHeader">
-                        <h2>Règles</h2>
+                        <h1>Règles</h1>
                         <div class="spacer"></div>
                         <button mat-icon-button (click)="closeRules()">
                             <mat-icon>close</mat-icon>
@@ -52,20 +53,45 @@
                     </div>
                     <mat-tab-group dynamicHeight color="accent" selectedIndex="{{ getIndex() }}">
                         <mat-tab label="Row Master">
-                            <div class="example-small-box mat-elevation-z4">
-                                <h4>Objectif</h4>
+                            <div class="rulesContent">
+                                <h2>Objectif</h2>
                                 Aligner 4 jetons de la même couleur en ligne, en colonne ou en diagonale.
-                                <h4>Comment jouer ?</h4>
+                                <h2>Comment jouer ?</h2>
                                 Cliquez sur le carré au bas de la colonne dans laquelle vous souhaitez placer votre
                                 jeton.
                             </div>
                         </mat-tab>
                         <mat-tab label="Grid Master">
-                            <div class="example-large-box mat-elevation-z4">
-                                <h4>Objectif</h4>
+                            <div class="rulesContent">
+                                <h2>Objectif</h2>
                                 Aligner 3 fois son signe en ligne, en colonne ou en diagonale.
-                                <h4>Comment jouer ?</h4>
-                                Cliquez directement sur la case où vous souhaitez placer votre signe.
+                                <h2>Comment jouer ?</h2>
+                                Cliquez directement sur la case dans laquelle vous souhaitez placer votre signe.
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Horse Master">
+                            <div class="rulesContent">
+                                <h2>Objectif</h2>
+                                Atteindre la case centrale avec chacun de ses chevaux et ce, avant ses adversaires.
+                                <h2>Comment jouer ?</h2>
+                                Une fois votre dé lancé, cliquez sur le cheval que vous souhaitez déplacer.
+                                Faire un 6 vous permet de rejouer.
+                                <div style="margin-top: 0.5em;">La partie se découpe en 3 étapes :</div>
+                                <h3>Départ</h3>
+                                <h6>Zone où les 4 chevaux sont réunis</h6>
+                                Vous devez faire un 6 au dé pour pouvoir sortir de cette zone. Vous pouvez faire
+                                sortir plusieurs chevaux.
+                                <h3>Circuit</h3>
+                                <h6>Les 56 cases principales</h6>
+                                Votre objectif sera ici de faire un tour complet pour atteindre la zone finale. Si un
+                                cheval vous bloque la route, vous pouvez l'éliminer en vous rendant sur la même case que
+                                lui. En revanche, vous ne pouvez pas le dépasser. En effet, si vous tirez un chiffre
+                                trop grand, vous reculerez une fois le cheval atteint.
+                                <h3>Arrivée</h3>
+                                <h6>Les cases numérotées de 1 à 6</h6>
+                                La dernière ligne droite. Pour évoluer ici, il faudra tirer le chiffre qui correspond au
+                                numéro de la case devant votre cheval. Enfin, il faudra finir par un 6 pour faire gagner
+                                votre cheval.
                             </div>
                         </mat-tab>
                     </mat-tab-group>
