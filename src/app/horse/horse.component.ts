@@ -98,14 +98,6 @@ export class HorseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.horses[0].move(6);
-    this.horses[0].move(5);
-    this.horses[4].move(6);
-    this.horses[4].move(5);
-    this.horses[8].move(6);
-    this.horses[8].move(5);
-    this.horses[12].move(6);
-    this.horses[12].move(5);
   }
   private delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
