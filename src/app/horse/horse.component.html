@@ -9,7 +9,7 @@
     <div class="rightSide">
         <div class="infos" *ngIf="!gameEnded">
             <div class="whosTurn">Au tour de <img src="{{ horsesImg[turn % 4] }}" height="30px"></div>
-            <img src="{{ dicesImg[dice - 1] }}" width="50px" class="dice">
+            <img class="dice" src="{{ dicesImg[dice - 1] }}" width="50px">
             <span *ngIf="dice === 6 && canPlay" class="playAgain">Vous rejouez !</span>
             <button (click)="play()" mat-raised-button>Lancer le dé</button>
         </div>

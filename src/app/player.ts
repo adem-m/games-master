@@ -65,17 +65,25 @@ export class Player {
         }
     }
     private async gameMove(num: number) {
-        this.enemyCheck(num);
         let direction = 1;
         for (let i = 1; i <= num; i++) {
             await this.delay(300);
             let position;
-            if (this.order.indexOf(this.currentPosition) + 1 === this.order.length) {
+            if (this.order.indexOf(this.currentPosition) + direction === this.order.length) {
                 position = 0;
+            } else if (this.order.indexOf(this.currentPosition) + direction === -1) {
+                position = this.order.length - 1;
             } else {
-                position = this.order.indexOf(this.currentPosition) + 1;
+                position = this.order.indexOf(this.currentPosition) + direction;
             }
-            if (this.isItAPlayer(this.cases[this.order[position]].content)) {
+            if (this.isItAPlayer(this.cases[this.order[position]].content) && i !== num) {
+                if (direction === 1) {
+                    direction = -1;
+                } else {
+                    direction = 1;
+                }
+            } else if (i === num && this.isItAPlayer(this.cases[this.order[position]].content) &&
+                !this.isItAnEnemy(this.cases[this.order[position]].content)) {
                 if (direction === 1) {
                     direction = -1;
                 } else {
@@ -93,6 +101,9 @@ export class Player {
                 }
             } else {
                 this.currentPosition = this.order[this.order.indexOf(this.currentPosition) + direction];
+            }
+            if (i === num) {
+                this.enemyCheck(this.currentPosition);
             }
             this.lastImg = this.cases[this.currentPosition].content;
             this.cases[this.currentPosition].content = this.img;
@@ -118,15 +129,9 @@ export class Player {
         }
     }
     private enemyCheck(num) {
-        let destination;
-        if (this.order.indexOf(this.currentPosition) + num >= this.order.length) {
-            destination = this.order[this.order.indexOf(this.currentPosition) + num - this.order.length];
-        } else {
-            destination = this.order[this.order.indexOf(this.currentPosition) + num];
-        }
-        if (this.isItAnEnemy(this.cases[destination].content)) {
+        if (this.isItAnEnemy(this.cases[num].content)) {
             for (const enemy of this.horses) {
-                if (enemy.currentPosition === destination) {
+                if (enemy.currentPosition === num && enemy.img !== this.img) {
                     enemy.back();
                 }
             }
@@ -161,16 +166,17 @@ export class Player {
         return true;
     }
     private isItAnEnemy(img): boolean {
-        if (img !== this.img && img !== 'assets/img/empty-case.png' && img !== 'assets/img/red-case.png'
-            && img !== 'assets/img/green-case.png' && img !== 'assets/img/yellow-case.png' && img !== 'assets/img/blue-case.png') {
-            return true;
+        if (img === 'assets/img/red-horse.png' || img === 'assets/img/green-horse.png' ||
+            img === 'assets/img/yellow-horse.png' || img === 'assets/img/blue-horse.png') {
+            if (img !== this.img) {
+                return true;
+            }
         }
         return false;
     }
     private isItAPlayer(img): boolean {
-        if (img !== 'assets/img/empty-case.png' && img !== 'assets/img/red-case.png'
-            && img !== 'assets/img/green-case.png' && img !== 'assets/img/yellow-case.png'
-            && img !== 'assets/img/blue-case.png' || img === this.cases[this.startIndex].content) {
+        if (img === 'assets/img/red-horse.png' || img === 'assets/img/green-horse.png' ||
+            img === 'assets/img/yellow-horse.png' || img === 'assets/img/blue-horse.png') {
             return true;
         }
         return false;
