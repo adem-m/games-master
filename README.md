@@ -8,12 +8,12 @@ Fully compatible with smartphones.
 
 ## Horse Master
 
-![Horse Master](https://adem-m.github.io/games-master/assets/screens/horse-master.png)
+![Horse Master](https://raw.githubusercontent.com/adem-m/games-master/master/src/assets/screens/horse-master.png)
 
 ## Row Master
 
-![Row Master](https://adem-m.github.io/games-master/assets/screens/row-master.png)
+![Row Master](https://raw.githubusercontent.com/adem-m/games-master/master/src/assets/screens/row-master.png)
 
 ## Grid Master
 
-![Grid Master](https://adem-m.github.io/games-master/assets/screens/grid-master.png)
+![Grid Master](https://raw.githubusercontent.com/adem-m/games-master/master/src/assets/screens/grid-master.png)
