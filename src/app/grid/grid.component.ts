@@ -66,6 +66,9 @@ export class GridComponent implements OnInit {
       this.counterSubscription.unsubscribe();
     }
   }
+  private delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
   initialisation() {
     for (let i = 0; i < 7; i++) {
       this.gridContent[i] = [];
@@ -81,17 +84,20 @@ export class GridComponent implements OnInit {
       this.counterSubscription.unsubscribe();
     }
   }
-  placeToken(column) {
-    if (!this.draw && !this.thereIsAWinner) {
-      for (let i = 5; i > -1; i--) {
+  async placeToken(column) {
+    if (!this.draw && !this.thereIsAWinner && this.gridContent[column][0][0] === this.init) {
+      for (let i = 0; i < 6; i++) {
         if (this.gridContent[column][i][0] === this.init) {
           this.gridContent[column][i][0] = this.playerToken[this.count % 2];
-          this.count++;
-          i = -1;
-          this.winCheck();
-          this.firstMove = false;
+          if (i !== 0) {
+            this.gridContent[column][i - 1][0] = this.init;
+          }
+          await this.delay(60);
         }
       }
+      this.count++;
+      this.winCheck();
+      this.firstMove = false;
     }
   }
   winCheck() {

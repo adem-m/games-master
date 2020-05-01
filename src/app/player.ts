@@ -17,6 +17,7 @@ export class Player {
     horses: Player[];
     zone: string;
     won: boolean;
+    canFinish = false;
 
     constructor(id, last, current, init, start, startIndex: number, img, startImg: string, cases: Case[],
         // tslint:disable-next-line: align
@@ -108,7 +109,10 @@ export class Player {
             this.lastImg = this.cases[this.currentPosition].content;
             this.cases[this.currentPosition].content = this.img;
         }
-        if (this.order.indexOf(this.currentPosition) === this.startIndex - 1) {
+        if (this.order.indexOf(this.currentPosition) > this.startIndex + 6) {
+            this.canFinish = true;
+        }
+        if (this.order.indexOf(this.currentPosition) === this.startIndex - 1 && this.canFinish) {
             this.zone = 'end';
         }
     }
@@ -153,14 +157,16 @@ export class Player {
         this.cases[this.currentPosition].content = this.img;
     }
     private limitCheck(num): boolean {
-        let position = this.order.indexOf(this.currentPosition);
-        for (let i = 1; i <= num; i++) {
-            position++;
-            if (position === this.order.length) {
-                position = 0;
-            }
-            if (position === this.startIndex) {
-                return false;
+        if (this.canFinish) {
+            let position = this.order.indexOf(this.currentPosition);
+            for (let i = 1; i <= num; i++) {
+                position++;
+                if (position === this.order.length) {
+                    position = 0;
+                }
+                if (position === this.startIndex) {
+                    return false;
+                }
             }
         }
         return true;
@@ -178,6 +184,20 @@ export class Player {
         if (img === 'assets/img/red-horse.png' || img === 'assets/img/green-horse.png' ||
             img === 'assets/img/yellow-horse.png' || img === 'assets/img/blue-horse.png') {
             return true;
+        }
+        return false;
+    }
+    isPlayable(dice: number): boolean {
+        if (this.zone === 'start' && dice === 6 && this.cases[this.startPosition].content === this.startImg) {
+            return true;
+        } else if (this.zone === 'game') {
+            return true;
+        } else {
+            if (this.endOrder.indexOf(this.currentPosition) === dice - 1 && this.cases[this.endOrder[dice]].content !== this.img) {
+                return true;
+            } else if (this.endOrder.indexOf(this.currentPosition) === 6 && dice === 6) {
+                return true;
+            }
         }
         return false;
     }

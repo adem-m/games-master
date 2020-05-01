@@ -1,4 +1,3 @@
-
 body {
     padding: 0 0.5em;
     background-color: rgb(51, 51, 51);
@@ -61,4 +60,7 @@ body {
 }
 .gameEndedPopup p {
     font-size: 2em;
+}
+.gameEndedPopup button {
+    margin-top: 1em;
 }

@@ -18,7 +18,7 @@ export class HorseComponent implements OnInit {
   bases = [27, 28, 42, 43, 192, 193, 207, 208, 181, 182, 196, 197, 16, 17, 31, 32];
   horses: Player[] = [];
   horsesImg = [];
-  dice;
+  dice: number;
   dicesImg = [];
   turn = 0;
   gameEnded = false;
@@ -105,7 +105,7 @@ export class HorseComponent implements OnInit {
   heCanPlay(): boolean {
     const img = this.horsesImg[this.turn % 4];
     for (const horse of this.horses) {
-      if (horse.img === img && horse.zone !== 'start') {
+      if (horse.img === img && horse.isPlayable(this.dice)) {
         return true;
       }
     }
@@ -141,7 +141,7 @@ export class HorseComponent implements OnInit {
   convert(i: number) {
     if (this.canPlay) {
       for (const horse of this.horses) {
-        if (horse.currentPosition === i && horse.img === this.horsesImg[this.turn % 4]) {
+        if (horse.currentPosition === i && horse.img === this.horsesImg[this.turn % 4] && horse.isPlayable(this.dice)) {
           horse.move(this.dice);
           if (this.dice !== 6 || horse.won) {
             this.turn++;
