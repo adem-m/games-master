@@ -6,7 +6,7 @@ import { Player } from '../player';
 @Component({
   selector: 'app-horse',
   templateUrl: './horse.component.html',
-  styleUrls: ['./horse.component.scss']
+  styleUrls: ['./horse.component.scss'],
 })
 
 export class HorseComponent implements OnInit {
@@ -24,6 +24,8 @@ export class HorseComponent implements OnInit {
   gameEnded = false;
   canPlay = false;
   haventPlayed = true;
+  help = false;
+  clickCounter = 0;
 
   constructor(private service: ScoresService) {
     this.horsesImg.push('assets/img/red-horse.png', 'assets/img/green-horse.png',
@@ -126,6 +128,8 @@ export class HorseComponent implements OnInit {
         this.canPlay = false;
         this.haventPlayed = true;
         this.dice = 0;
+        this.help = false;
+        this.clickCounter = 0;
       } else {
         this.canPlay = true;
       }
@@ -136,10 +140,17 @@ export class HorseComponent implements OnInit {
           this.turn++;
         }
       }
+    } else {
+      this.clickCounter++;
+      if (this.clickCounter === 5) {
+        this.help = true;
+      }
     }
   }
   convert(i: number) {
     if (this.canPlay) {
+      this.help = false;
+      this.clickCounter = 0;
       for (const horse of this.horses) {
         if (horse.currentPosition === i && horse.img === this.horsesImg[this.turn % 4] && horse.isPlayable(this.dice)) {
           horse.move(this.dice);

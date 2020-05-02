@@ -66,7 +66,6 @@ export class Player {
         }
     }
     private async gameMove(num: number) {
-        console.log('gamemove');
         let direction = 1;
         for (let i = 1; i <= num; i++) {
             await this.delay(300);
@@ -190,9 +189,28 @@ export class Player {
         return false;
     }
     isPlayable(dice: number): boolean {
-        if (this.zone === 'start' && dice === 6 && this.cases[this.startPosition].content === this.startImg) {
+        if (this.zone === 'start' && dice === 6 && this.cases[this.startPosition].content !== this.img) {
             return true;
         } else if (this.zone === 'game') {
+            let position;
+            let front;
+            let back;
+            if (this.order.indexOf(this.currentPosition) === this.order.length) {
+                position = 0;
+                front = 1;
+                back = this.order.length - 1;
+            } else if (this.order.indexOf(this.currentPosition) === -1) {
+                position = this.order.length - 1;
+                front = 0;
+                back = position - 1;
+            } else {
+                position = this.order.indexOf(this.currentPosition);
+                front = position + 1;
+                back = position - 1;
+            }
+            if (this.isItAPlayer(this.cases[this.order[front]]) && this.isItAPlayer(this.cases[this.order[back]])) {
+                return false;
+            }
             return true;
         } else {
             if (this.endOrder.indexOf(this.currentPosition) === dice - 1 && this.cases[this.endOrder[dice]].content !== this.img) {

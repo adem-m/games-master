@@ -12,6 +12,7 @@
             <img class="dice" src="{{ dicesImg[dice - 1] }}" width="50px">
             <span *ngIf="dice === 6 && canPlay" class="playAgain">Vous rejouez !</span>
             <button (click)="play()" mat-raised-button>Lancer le dé</button>
+            <span *ngIf="help" class="help">Cliquez sur le cheval que vous souhaitez déplacer</span>
         </div>
         <div class="infos" *ngIf="gameEnded">
             <div class="whosTurn">Partie terminée</div>
