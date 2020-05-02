@@ -64,3 +64,26 @@ body {
 .gameEndedPopup button {
     margin-top: 1em;
 }
+@media all and (max-width: 1330px) {
+    body {
+        flex-direction: column;
+        max-height: 600px;
+    }
+    .grid {
+        order: 2;
+    }
+    .whosTurn {
+        margin: 4em auto;
+    }
+}
+@media all and (max-width: 945px) {
+    body {
+        max-height: max-content;
+    }
+    .grid {
+        order: 0;
+    }
+    .whosTurn {
+        margin: auto;
+    }
+}

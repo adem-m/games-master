@@ -66,6 +66,7 @@ export class Player {
         }
     }
     private async gameMove(num: number) {
+        console.log('gamemove');
         let direction = 1;
         for (let i = 1; i <= num; i++) {
             await this.delay(300);
@@ -109,7 +110,8 @@ export class Player {
             this.lastImg = this.cases[this.currentPosition].content;
             this.cases[this.currentPosition].content = this.img;
         }
-        if (this.order.indexOf(this.currentPosition) > this.startIndex + 6) {
+        if (this.order.indexOf(this.currentPosition) > this.startIndex + 6 &&
+            this.order.indexOf(this.currentPosition) < this.startIndex + 13) {
             this.canFinish = true;
         }
         if (this.order.indexOf(this.currentPosition) === this.startIndex - 1 && this.canFinish) {
