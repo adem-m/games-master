@@ -16,7 +16,7 @@
                 <button mat-raised-button (click)="openRules()">Règles</button>
                 <div class="spacer"></div>
                 <div class="horseScore" *ngIf="getIndex() === 2">
-                    <div class="eachScore" *ngFor="score of scores; index as i"><img src="{{ horsesImg[i] }}"
+                    <div class="eachScore" *ngFor="let score of scores; index as i"><img src="{{ horsesImg[i] }}"
                             height="35px">
                         {{ getScore(i) }}</div>
                 </div>
@@ -57,7 +57,7 @@
                                 <h2>Objectif</h2>
                                 Aligner 4 jetons de la même couleur en ligne, en colonne ou en diagonale.
                                 <h2>Comment jouer ?</h2>
-                                Cliquez sur le carré au bas de la colonne dans laquelle vous souhaitez placer votre
+                                Cliquez sur la colonne dans laquelle vous souhaitez placer votre
                                 jeton.
                             </div>
                         </mat-tab>

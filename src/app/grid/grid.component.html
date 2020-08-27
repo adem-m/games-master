@@ -3,11 +3,11 @@
         <div class="whosTurn">Au tour d{{ apostrophe() }}{{ whosTurn() }} <img src="{{ playerToken[count % 2] }}" width="50px"></div>
     </div>
     <div class="grid">
-        <div class="column" *ngFor="let c of gridContent; index as i">
+        <div class="column" *ngFor="let c of gridContent; index as i" (click)="placeToken(i)">
             <div *ngFor="let img of c"><img [@blink]="!img[1] ? 'visible' : 'invisible'" src="{{ img[0] }}"
                     width="100%"></div>
-            <button mat-raised-button (click)="placeToken(i)" (mouseover)="onMouseOver(i)"
-                (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="100%" style="padding: 0.5em 0;"></button>
+            <!-- <button mat-raised-button (click)="placeToken(i)" (mouseover)="onMouseOver(i)"
+                (mouseout)="onMouseOut(i)"><img src="{{ buttons[i] }}" width="100%" style="padding: 0.5em 0;"></button> -->
         </div>
     </div>
     <div class="infos">
